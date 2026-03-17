@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recurring: false
+  value: 9.99
+  title: MyString
+  due_date: 2026-03-17
+  description: MyText
+  payment_method: MyString
+
+two:
+  recurring: false
+  value: 9.99
+  title: MyString
+  due_date: 2026-03-17
+  description: MyText
+  payment_method: MyString
