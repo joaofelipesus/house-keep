@@ -24,6 +24,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 13L14 3L25 13V25H18V18H10V25H3V13Z" fill="#4f46e5" stroke="#4f46e5" stroke-width="1.5" stroke-linejoin="round"/>
+          <rect x="11" y="18" width="6" height="7" fill="white"/>
+        </svg>
+        <span>HouseKeep</span>
+      <% end %>
+      <div class="navbar-links">
+        <%= link_to "Bills", bills_path %>
+      </div>
+    </nav>
+    <main class="main-content">
+      <%= yield %>
+    </main>
   </body>
 </html>
