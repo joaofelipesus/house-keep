@@ -1,17 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  recurring: false
-  value: 9.99
-  title: MyString
+internet:
+  recurring: true
+  value: 109.99
+  title: Internet Bill
   due_date: 2026-03-17
-  description: MyText
-  payment_method: MyString
-
-two:
-  recurring: false
-  value: 9.99
-  title: MyString
-  due_date: 2026-03-17
-  description: MyText
-  payment_method: MyString
+  description: Monthly internet bill
+  payment_method: credit_card
