@@ -13,35 +13,5 @@
 
 body { font-family: system-ui, sans-serif; background: #f9fafb; color: #111827; }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  height: 56px;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #111827;
-  letter-spacing: -0.02em;
-}
-
-.navbar-links a {
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #6b7280;
-  transition: color 0.15s;
-}
-
-.navbar-links a:hover { color: #4f46e5; }
 
 .main-content { max-width: 960px; margin: 2rem auto; padding: 0 1.5rem; }
