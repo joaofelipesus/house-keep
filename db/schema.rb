@@ -20,7 +20,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_17_223243) do
     t.date "due_date", null: false, comment: "when the bill is charged"
     t.string "payment_method", comment: "An enum with the payment method, e.g. credit card, or pix"
     t.boolean "recurring", comment: "Define if the bill is paid every month"
-    t.string "title", comment: "a simple description"
+    t.string "title", null: false, comment: "a simple description"
     t.datetime "updated_at", null: false
     t.decimal "value", precision: 10, scale: 2, null: false, comment: "bill value"
   end
