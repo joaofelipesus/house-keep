@@ -61,6 +61,7 @@ class BillsControllerTest < ActionDispatch::IntegrationTest
         }
       }
     )
+
     assert_redirected_to bill_url(@bill)
   end
 
