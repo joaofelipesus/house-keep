@@ -34,6 +34,18 @@
   border-color: #4f46e5;
 }
 
+.field_with_errors { display: contents; }
+
+.form-field .field_with_errors input,
+.form-field .field_with_errors textarea {
+  border-color: #ef4444;
+}
+
+.form-field .field_with_errors input:focus,
+.form-field .field_with_errors textarea:focus {
+  border-color: #dc2626;
+}
+
 .form-field textarea {
   resize: vertical;
   min-height: 80px;
