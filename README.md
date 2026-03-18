@@ -24,6 +24,6 @@ Things you may want to cover:
 * ...
 
 # TODO
-- rubocop
-- home bills
-- bill crud
+- finish bill crud
+- add image with the bill logo
+- add crud on home
