@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      bill: "Conta"
+    attributes:
+      bill:
+        title: "Título"
+        value: "Valor"
+        due_date: "Data de vencimento"
+        recurring: "Recorrente"
+        description: "Descrição"
+        payment_method: "Forma de pagamento"
+    errors:
+      models:
+        bill:
+          attributes:
+            title:
+              blank: "não pode ficar em branco"
+              taken: "já está em uso"
+            value:
+              blank: "não pode ficar em branco"
+            due_date:
+              blank: "não pode ficar em branco"
