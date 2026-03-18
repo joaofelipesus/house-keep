@@ -1,49 +1,37 @@
-<%= form_with(model: bill) do |form| %>
+<%= form_with(model: bill, class: "form") do |form| %>
   <%= render(partial: 'layouts/components/forms/errors', locals: { record: bill }) %>
 
-  <% if bill.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
-
-      <ul>
-        <% bill.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :recurring, style: "display: block" %>
+  <div class="form-field form-field-inline">
+    <%= form.label :recurring %>
     <%= form.checkbox :recurring %>
   </div>
 
-  <div>
-    <%= form.label :value, style: "display: block" %>
+  <div class="form-field">
+    <%= form.label :value %>
     <%= form.text_field :value %>
   </div>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
+  <div class="form-field">
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :due_date, style: "display: block" %>
+  <div class="form-field">
+    <%= form.label :due_date %>
     <%= form.date_field :due_date %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
+  <div class="form-field">
+    <%= form.label :description %>
     <%= form.textarea :description %>
   </div>
 
-  <div>
-    <%= form.label :payment_method, style: "display: block" %>
+  <div class="form-field">
+    <%= form.label :payment_method %>
     <%= form.text_field :payment_method %>
   </div>
 
-  <div>
+  <div class="form-submit">
     <%= form.submit %>
   </div>
 <% end %>
