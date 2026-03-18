@@ -1,8 +1,81 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+plugins:
+  - rubocop-performance
+  - rubocop-rails
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
+AllCops:
+  TargetRubyVersion: 3.4
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
+    - 'db/queue_schema.rb'
+    - 'bin/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'log/**/*'
+    - '.git/**/*'
+
+Style/HashSyntax:
+  Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+  Exclude:
+    - 'Gemfile'
+
+Lint/EmptyBlock:
+  Exclude:
+    - "test/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "test/**/*"
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - "test/**/*"
+
+Naming/VariableNumber:
+  Enabled: false
+
+Metrics/ClassLength:
+  Exclude:
+    - "test/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+  Exclude:
+    - "test/**/*"
+    - "lib/tasks/**/*.rake"
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/StrongParametersExpect:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+# TODO: review and enable
+# Rails/UniqueValidationWithoutIndex:
+#   Enabled: false
+
+# # TODO: review and enable
+# Rails/HasAndBelongsToMany:
 #   Enabled: false

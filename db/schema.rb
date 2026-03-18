@@ -23,5 +23,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_17_223243) do
     t.string "title", null: false, comment: "a simple description"
     t.datetime "updated_at", null: false
     t.decimal "value", precision: 10, scale: 2, null: false, comment: "bill value"
+    t.index ["title"], name: "index_bills_on_title", unique: true
   end
 end

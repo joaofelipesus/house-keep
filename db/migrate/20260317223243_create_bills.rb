@@ -10,5 +10,7 @@ class CreateBills < ActiveRecord::Migration[8.1]
       t.text :description, comment: 'an optional text with a detailed description'
       t.string :payment_method, comment: 'An enum with the payment method, e.g. credit card, or pix'
     end
+
+    add_index :bills, :title, unique: true
   end
 end
