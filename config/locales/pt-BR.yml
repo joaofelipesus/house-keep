@@ -21,3 +21,34 @@ pt-BR:
               blank: "não pode ficar em branco"
             due_date:
               blank: "não pode ficar em branco"
+
+  layouts:
+    components:
+      forms:
+        errors:
+          header:
+            one: "1 erro impediu este %{model} de ser salvo:"
+            other: "%{count} erros impediram este %{model} de ser salvo:"
+
+  helpers:
+    submit:
+      bill:
+        create: "Criar conta"
+        update: "Salvar alterações"
+
+  bills:
+    index:
+      title: "Contas"
+      show_bill: "Visualizar"
+      new_bill: "Nova conta"
+    new:
+      title: "Nova conta"
+      back: "Voltar para contas"
+    edit:
+      title: "Editando conta"
+      show_bill: "Visualizar"
+      back: "Voltar para contas"
+    show:
+      edit_bill: "Editar"
+      destroy_bill: "Excluir"
+      back: "Voltar para contas"

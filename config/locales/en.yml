@@ -21,3 +21,34 @@ en:
               blank: "can't be blank"
             due_date:
               blank: "can't be blank"
+
+  layouts:
+    components:
+      forms:
+        errors:
+          header:
+            one: "1 error prohibited this %{model} from being saved:"
+            other: "%{count} errors prohibited this %{model} from being saved:"
+
+  helpers:
+    submit:
+      bill:
+        create: "Create bill"
+        update: "Save changes"
+
+  bills:
+    index:
+      title: "Bills"
+      show_bill: "Show"
+      new_bill: "New bill"
+    new:
+      title: "New bill"
+      back: "Back to bills"
+    edit:
+      title: "Editing bill"
+      show_bill: "Show"
+      back: "Back to bills"
+    show:
+      edit_bill: "Edit"
+      destroy_bill: "Delete"
+      back: "Back to bills"

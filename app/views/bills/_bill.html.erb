@@ -1,32 +1,31 @@
 <div id="<%= dom_id bill %>">
   <div>
-    <strong>Recurring:</strong>
+    <strong><%= Bill.human_attribute_name(:recurring) %>:</strong>
     <%= bill.recurring %>
   </div>
 
   <div>
-    <strong>Value:</strong>
+    <strong><%= Bill.human_attribute_name(:value) %>:</strong>
     <%= bill.value %>
   </div>
 
   <div>
-    <strong>Title:</strong>
+    <strong><%= Bill.human_attribute_name(:title) %>:</strong>
     <%= bill.title %>
   </div>
 
   <div>
-    <strong>Due date:</strong>
+    <strong><%= Bill.human_attribute_name(:due_date) %>:</strong>
     <%= bill.due_date %>
   </div>
 
   <div>
-    <strong>Description:</strong>
+    <strong><%= Bill.human_attribute_name(:description) %>:</strong>
     <%= bill.description %>
   </div>
 
   <div>
-    <strong>Payment method:</strong>
+    <strong><%= Bill.human_attribute_name(:payment_method) %>:</strong>
     <%= bill.payment_method %>
   </div>
-
 </div>
