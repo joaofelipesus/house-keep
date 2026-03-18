@@ -34,6 +34,28 @@
   border-color: #4f46e5;
 }
 
+.form-errors {
+  padding: 0.75rem 1rem;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
+.form-errors-title {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.form-errors ul {
+  padding-left: 1.25rem;
+}
+
+.form-errors li {
+  margin-top: 0.15rem;
+}
+
 .field_with_errors { display: contents; }
 
 .form-field .field_with_errors input,
