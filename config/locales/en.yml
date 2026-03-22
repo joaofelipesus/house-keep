@@ -11,6 +11,7 @@ en:
         description: "Description"
         payment_method: "Payment method"
         company_logo: "Company logo"
+        recurrent_due_day: "Recurrent due day"
     errors:
       models:
         bill:

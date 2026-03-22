@@ -4,6 +4,15 @@
 class Bill < ApplicationRecord
   has_one_attached :company_logo
 
-  validates :title, :due_date, presence: true
+  validates :title, presence: true
   validates :title, uniqueness: true
+
+  validates :recurrent_due_day, presence: true, if: :recurring?
+  validates :due_date, presence: true, if: :non_recurring?
+
+  private
+
+  def non_recurring?
+    !recurring?
+  end
 end

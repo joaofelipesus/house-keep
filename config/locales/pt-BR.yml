@@ -11,6 +11,7 @@ pt-BR:
         description: "Descrição"
         payment_method: "Forma de pagamento"
         company_logo: "Logo da empresa"
+        recurrent_due_day: "Dia de vencimento recorrente"
     errors:
       models:
         bill:
@@ -21,6 +22,8 @@ pt-BR:
             value:
               blank: "não pode ficar em branco"
             due_date:
+              blank: "não pode ficar em branco"
+            recurrent_due_day:
               blank: "não pode ficar em branco"
 
   layouts:

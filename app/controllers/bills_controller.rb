@@ -23,27 +23,19 @@ class BillsController < ApplicationController
   def create
     @bill = Bill.new(bill_params)
 
-    respond_to do |format|
-      if @bill.save
-        format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
-        format.json { render :show, status: :created, location: @bill }
-      else
-        format.html { render :new, status: :unprocessable_content }
-        format.json { render json: @bill.errors, status: :unprocessable_content }
-      end
+    if @bill.save
+      redirect_to @bill, notice: 'Bill was successfully created.'
+    else
+      render :new, status: :unprocessable_content
     end
   end
 
   # PATCH/PUT /bills/1 or /bills/1.json
   def update
-    respond_to do |format|
-      if @bill.update(bill_params)
-        format.html { redirect_to @bill, notice: 'Bill was successfully updated.', status: :see_other }
-        format.json { render :show, status: :ok, location: @bill }
-      else
-        format.html { render :edit, status: :unprocessable_content }
-        format.json { render json: @bill.errors, status: :unprocessable_content }
-      end
+    if @bill.update(bill_params)
+      redirect_to @bill, notice: 'Bill was successfully updated.', status: :see_other
+    else
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -51,10 +43,7 @@ class BillsController < ApplicationController
   def destroy
     @bill.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to bills_path, notice: 'Bill was successfully destroyed.', status: :see_other }
-      format.json { head :no_content }
-    end
+    redirect_to bills_path, notice: 'Bill was successfully destroyed.', status: :see_other
   end
 
   private
@@ -66,6 +55,8 @@ class BillsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def bill_params
-    params.expect(bill: %i[recurring value title due_date description payment_method company_logo])
+    params
+      .expect(bill: %i[recurring value title due_date description payment_method company_logo recurrent_due_day])
+      .merge(recurring: ActiveModel::Type::Boolean.new.cast(params[:bill][:recurring]))
   end
 end
