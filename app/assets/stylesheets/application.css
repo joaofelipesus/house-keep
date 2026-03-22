@@ -55,8 +55,20 @@
   --text-lg: 1.1rem;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-body { font-family: system-ui, sans-serif; background: var(--color-bg); color: var(--color-text); }
+body {
+  font-family: system-ui, sans-serif;
+   background: var(--color-bg);
+   color: var(--color-text);
+}
 
-.main-content { max-width: 960px; margin: var(--space-2xl) auto; padding: 0 var(--space-xl); }
+.main-content {
+  max-width: 960px;
+  margin: var(--space-2xl) auto;
+  padding: 0 var(--space-xl);
+}
