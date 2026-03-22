@@ -4,7 +4,7 @@ require 'test_helper'
 
 class BillsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @bill = bills(:one)
+    @bill = bills(:internet)
   end
 
   test 'should get index' do
@@ -23,12 +23,13 @@ class BillsControllerTest < ActionDispatch::IntegrationTest
         bills_url,
         params: {
           bill: {
-            description: @bill.description,
-            due_date: @bill.due_date,
-            payment_method: @bill.payment_method,
-            recurring: @bill.recurring,
-            title: @bill.title,
-            value: @bill.value
+            description: '',
+            due_date: nil,
+            payment_method: nil,
+            recurrent_due_day: 15,
+            recurring: '1', # checked value
+            title: 'Light',
+            value: nil
           }
         }
       )

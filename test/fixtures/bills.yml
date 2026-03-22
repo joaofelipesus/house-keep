@@ -2,8 +2,9 @@
 
 internet:
   recurring: true
-  value: 109.99
+  value: null
   title: Internet Bill
-  due_date: 2026-03-17
+  due_date: null
+  recurrent_due_day: 17
   description: Monthly internet bill
   payment_method: credit_card
