@@ -1,4 +1,4 @@
-<%= form_with(model: bill, class: "form") do |form| %>
+<%= form_with(model: bill, class: "form", data: { 'controller' => 'bills--form'}) do |form| %>
   <%= render(partial: 'layouts/components/forms/errors', locals: { record: bill }) %>
 
   <div class="form-field">
@@ -8,7 +8,15 @@
 
   <div class="form-field form-field-inline">
     <%= form.label :recurring %>
-    <%= form.checkbox :recurring %>
+    <%=
+      form.checkbox(
+        :recurring,
+        data: {
+          'action' => 'change->bills--form#toggleRecurring',
+          'bills--form-target' => 'recurringInput'
+        }
+      )
+    %>
   </div>
 
   <div class="form-field">
@@ -16,9 +24,20 @@
     <%= form.text_field :value %>
   </div>
 
-  <div class="form-field">
+  <div
+    class="form-field"
+    data-bills--form-target="dueDateSection"
+  >
     <%= form.label :due_date %>
     <%= form.date_field :due_date %>
+  </div>
+
+  <div
+    class="form-field"
+    data-bills--form-target="recurrentDueDaySection"
+  >
+    <%= form.label :recurrent_due_day %>
+    <%= form.number_field :recurrent_due_day, min: 1, max: 31 %>
   </div>
 
   <div class="form-field">
