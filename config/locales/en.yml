@@ -10,6 +10,7 @@ en:
         recurring: "Recurring"
         description: "Description"
         payment_method: "Payment method"
+        company_logo: "Company logo"
     errors:
       models:
         bill:
@@ -37,6 +38,9 @@ en:
         update: "Save changes"
 
   bills:
+    form:
+      company_logo_hint: "Click to upload an image (PNG, JPG, SVG)"
+
     index:
       title: "Bills"
       show_bill: "Show"

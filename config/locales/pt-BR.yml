@@ -10,6 +10,7 @@ pt-BR:
         recurring: "Recorrente"
         description: "Descrição"
         payment_method: "Forma de pagamento"
+        company_logo: "Logo da empresa"
     errors:
       models:
         bill:
@@ -37,6 +38,9 @@ pt-BR:
         update: "Salvar alterações"
 
   bills:
+    form:
+      company_logo_hint: "Clique para enviar uma imagem (PNG, JPG, SVG)"
+
     index:
       title: "Contas"
       show_bill: "Visualizar"

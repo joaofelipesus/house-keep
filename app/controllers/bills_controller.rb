@@ -66,6 +66,6 @@ class BillsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def bill_params
-    params.expect(bill: %i[recurring value title due_date description payment_method])
+    params.expect(bill: %i[recurring value title due_date description payment_method company_logo])
   end
 end
