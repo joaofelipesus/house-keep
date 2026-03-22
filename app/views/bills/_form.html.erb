@@ -1,6 +1,11 @@
 <%= form_with(model: bill, class: "form") do |form| %>
   <%= render(partial: 'layouts/components/forms/errors', locals: { record: bill }) %>
 
+  <div class="form-field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
   <div class="form-field form-field-inline">
     <%= form.label :recurring %>
     <%= form.checkbox :recurring %>
@@ -9,11 +14,6 @@
   <div class="form-field">
     <%= form.label :value %>
     <%= form.text_field :value %>
-  </div>
-
-  <div class="form-field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
 
   <div class="form-field">
