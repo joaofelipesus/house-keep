@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_22_213058) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_22_214857) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,7 +50,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_22_213058) do
     t.boolean "recurring", comment: "Define if the bill is paid every month"
     t.string "title", null: false, comment: "a simple description"
     t.datetime "updated_at", null: false
-    t.decimal "value", precision: 10, scale: 2, null: false, comment: "bill value"
+    t.decimal "value", precision: 10, scale: 2, comment: "bill value"
     t.index ["title"], name: "index_bills_on_title", unique: true
   end
 

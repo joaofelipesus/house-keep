@@ -7,9 +7,8 @@ class BillTest < ActiveSupport::TestCase
     bill = Bill.new
 
     assert_not bill.valid?
-    assert_equal bill.errors[:value], ['can\'t be blank']
-    assert_equal bill.errors[:title], ['can\'t be blank']
-    assert_equal bill.errors[:due_date], ['can\'t be blank']
+    assert_equal bill.errors[:title], ['não pode ficar em branco']
+    assert_equal bill.errors[:due_date], ['não pode ficar em branco']
   end
 
   test 'unique validations' do
@@ -18,6 +17,6 @@ class BillTest < ActiveSupport::TestCase
 
     assert_not bill.valid?
 
-    assert_equal bill.errors[:title], ['has already been taken']
+    assert_equal bill.errors[:title], ['já está em uso']
   end
 end
