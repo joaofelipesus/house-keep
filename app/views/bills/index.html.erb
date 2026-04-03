@@ -9,8 +9,8 @@
   <p class="flash flash-notice"><%= notice %></p>
 <% end %>
 
-<div class="bills-table-wrapper">
-  <table class="bills-table">
+<div class="table-wrapper">
+  <table class="table">
     <thead>
       <tr>
         <th><%= Bill.human_attribute_name(:title) %></th>
@@ -26,44 +26,44 @@
         <% @bills.each do |bill| %>
           <tr>
             <td>
-              <div class="bills-table-name">
-                <div class="bills-table-logo">
+              <div class="table-name">
+                <div class="table-logo">
                   <% if bill.company_logo.attached? %>
-                    <%= image_tag bill.company_logo, class: "bills-table-logo-img" %>
+                    <%= image_tag bill.company_logo, class: "table-logo-img" %>
                   <% else %>
-                    <span class="bills-table-logo-placeholder"><%= bill.title.first.upcase %></span>
+                    <span class="table-logo-placeholder"><%= bill.title.first.upcase %></span>
                   <% end %>
                 </div>
-                <div class="bills-table-info">
-                  <span class="bills-table-title"><%= bill.title %></span>
+                <div class="table-info">
+                  <span class="table-title"><%= bill.title %></span>
                   <% if bill.description.present? %>
-                    <span class="bills-table-description"><%= bill.description %></span>
+                    <span class="table-description"><%= bill.description %></span>
                   <% end %>
                 </div>
               </div>
             </td>
-            <td class="bills-table-value"><%= number_to_currency(bill.value, unit: "R$", separator: ",", delimiter: ".") %></td>
-            <td class="bills-table-muted">
+            <td class="table-value"><%= number_to_currency(bill.value, unit: "R$", separator: ",", delimiter: ".") %></td>
+            <td class="table-muted">
               <% if bill.recurring? %>
                 <%= t('.due') %> <%= bill.recurrent_due_day %>
               <% else %>
                 <%= l(bill.due_date, format: :short) %>
               <% end %>
             </td>
-            <td class="bills-table-muted"><%= bill.payment_method.presence || "—" %></td>
+            <td class="table-muted"><%= bill.payment_method.presence || "—" %></td>
             <td>
               <% if bill.recurring? %>
                 <span class="bill-badge"><%= Bill.human_attribute_name(:recurring) %></span>
               <% end %>
             </td>
-            <td class="bills-table-actions">
+            <td class="table-actions">
               <%= link_to t('.open_bill'), bill_path(bill), class: "btn btn-ghost btn-sm" %>
             </td>
           </tr>
         <% end %>
       <% else %>
         <tr>
-          <td colspan="6" class="bills-table-empty"><%= t('.no_bills') %></td>
+          <td colspan="6" class="table-empty"><%= t('.no_bills') %></td>
         </tr>
       <% end %>
     </tbody>
