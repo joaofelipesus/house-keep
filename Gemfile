@@ -62,8 +62,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
-  # Live Reload for your Rails app. The easiest way to increase your productivity.
-  gem 'rails_live_reload'
+  # Hot reloading for Hotwire
+  gem "hotwire-spark"
 end
 
 group :test do
