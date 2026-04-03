@@ -1,10 +1,65 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, t('.title') %>
 
-<%= render @bill %>
+<div class="page-header">
+  <h1 class="page-title"><%= t('.title') %></h1>
+  <div class="page-actions">
+    <%= link_to t('.back'), bills_path, class: "btn btn-ghost btn-sm" %>
+    <%= link_to t('.edit_bill'), edit_bill_path(@bill), class: "btn btn-ghost btn-sm" %>
+    <%= button_to t('.destroy_bill'), @bill, method: :delete, class: "btn btn-danger btn-sm" %>
+  </div>
+</div>
 
-<div>
-  <%= link_to t('.edit_bill'), edit_bill_path(@bill) %> |
-  <%= link_to t('.back'), bills_path %>
+<% if notice.present? %>
+  <p class="flash flash-notice"><%= notice %></p>
+<% end %>
 
-  <%= button_to t('.destroy_bill'), @bill, method: :delete %>
+<div class="detail-card">
+  <div class="detail-card-header">
+    <div class="detail-card-logo">
+      <% if @bill.company_logo.attached? %>
+        <%= image_tag @bill.company_logo %>
+      <% else %>
+        <span class="detail-card-logo-placeholder"><%= @bill.title.first.upcase %></span>
+      <% end %>
+    </div>
+    <div class="detail-card-heading">
+      <span class="detail-card-title"><%= @bill.title %></span>
+      <% if @bill.recurring? %>
+        <span class="bill-badge"><%= Bill.human_attribute_name(:recurring) %></span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="detail-card-body">
+    <div class="detail-field">
+      <div class="detail-field-label"><%= Bill.human_attribute_name(:value) %></div>
+      <div class="detail-field-value"><%= number_to_currency(@bill.value, unit: "R$", separator: ",", delimiter: ".") %></div>
+    </div>
+
+    <div class="detail-field">
+      <div class="detail-field-label"><%= Bill.human_attribute_name(:payment_method) %></div>
+      <div class="detail-field-value <%= 'detail-field-empty' unless @bill.payment_method.present? %>">
+        <%= @bill.payment_method.presence || "—" %>
+      </div>
+    </div>
+
+    <% if @bill.recurring? %>
+      <div class="detail-field">
+        <div class="detail-field-label"><%= Bill.human_attribute_name(:recurrent_due_day) %></div>
+        <div class="detail-field-value"><%= @bill.recurrent_due_day %></div>
+      </div>
+    <% else %>
+      <div class="detail-field">
+        <div class="detail-field-label"><%= Bill.human_attribute_name(:due_date) %></div>
+        <div class="detail-field-value"><%= l(@bill.due_date, format: :long) %></div>
+      </div>
+    <% end %>
+
+    <div class="detail-field">
+      <div class="detail-field-label"><%= Bill.human_attribute_name(:description) %></div>
+      <div class="detail-field-value <%= 'detail-field-empty' unless @bill.description.present? %>">
+        <%= @bill.description.presence || t('.no_description') %>
+      </div>
+    </div>
+  </div>
 </div>

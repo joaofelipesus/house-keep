@@ -60,6 +60,8 @@ pt-BR:
       show_bill: "Visualizar"
       back: "Voltar para contas"
     show:
+      title: "Detalhes da conta"
       edit_bill: "Editar"
       destroy_bill: "Excluir"
       back: "Voltar para contas"
+      no_description: "Sem descrição"
