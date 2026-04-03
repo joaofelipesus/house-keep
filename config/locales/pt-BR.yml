@@ -1,7 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      bill: "Conta"
+      bill:
+        one: "Conta"
+        other: "Contas"
     attributes:
       bill:
         title: "Título"

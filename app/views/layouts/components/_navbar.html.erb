@@ -7,6 +7,6 @@
     <span>HouseKeep</span>
   <% end %>
   <div class="navbar-links">
-    <%= link_to "Bills", bills_path %>
+    <%= link_to Bill.model_name.human(count: 2), bills_path %>
   </div>
 </nav>
