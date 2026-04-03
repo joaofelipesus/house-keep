@@ -28,5 +28,9 @@ module HouseKeep
 
     config.i18n.available_locales = %i[en pt-BR]
     config.i18n.default_locale = :'pt-BR'
+
+    config.generators do |g|
+      g.helper false
+    end
   end
 end
