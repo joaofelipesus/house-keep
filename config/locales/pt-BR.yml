@@ -48,8 +48,10 @@ pt-BR:
 
     index:
       title: "Contas"
-      show_bill: "Visualizar"
       new_bill: "Nova conta"
+      due: "Dia"
+      open_bill: "Abrir"
+      no_bills: "Nenhuma conta cadastrada."
     new:
       title: "Nova conta"
       back: "Voltar para contas"
