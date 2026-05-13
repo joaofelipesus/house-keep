@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_22_220132) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_13_135655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -55,6 +55,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_22_220132) do
     t.index ["title"], name: "index_bills_on_title", unique: true
   end
 
+  create_table "invoices", comment: "Invoices related to a bill, is the model that store the act of payment", force: :cascade do |t|
+    t.bigint "bill_id", null: false
+    t.text "comment", comment: "A optional description of the invoice"
+    t.datetime "created_at", null: false
+    t.date "payment_date", comment: "The date when the bill was paid"
+    t.string "payment_status", null: false, comment: "A enum with the payment status of the invoice (pending, paid, delayed)"
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_invoices_on_bill_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "invoices", "bills"
 end
