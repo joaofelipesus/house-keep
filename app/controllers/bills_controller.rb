@@ -21,9 +21,9 @@ class BillsController < ApplicationController
 
   # POST /bills or /bills.json
   def create
-    @bill = Bill.new(bill_params)
+    @bill = Bill.create_bill_with_invoices(bill_params)
 
-    if @bill.save
+    if @bill.valid?
       redirect_to @bill, notice: 'Bill was successfully created.'
     else
       render :new, status: :unprocessable_content

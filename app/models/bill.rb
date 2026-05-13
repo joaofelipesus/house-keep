@@ -4,6 +4,8 @@
 class Bill < ApplicationRecord
   include Bills::Invoiceable
 
+  has_many :invoices, dependent: :destroy
+
   has_one_attached :company_logo
 
   enum(

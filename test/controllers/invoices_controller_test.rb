@@ -2,7 +2,7 @@ require "test_helper"
 
 class InvoicesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @invoice = invoices(:one)
+    @invoice = invoices(:delayed_invoice)
   end
 
   test "should get index" do
@@ -17,7 +17,18 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create invoice" do
     assert_difference("Invoice.count") do
-      post invoices_url, params: { invoice: { bill_id: @invoice.bill_id, comment: @invoice.comment, payment_date: @invoice.payment_date, payment_status: @invoice.payment_status } }
+      post(
+        invoices_url,
+        params: {
+          invoice: {
+            bill_id: @invoice.bill_id,
+            comment: @invoice.comment,
+            payment_date: @invoice.payment_date,
+            payment_status: @invoice.payment_status,
+            due_date: 1.day.ago
+          }
+        }
+      )
     end
 
     assert_redirected_to invoice_url(Invoice.last)
@@ -34,7 +45,18 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update invoice" do
-    patch invoice_url(@invoice), params: { invoice: { bill_id: @invoice.bill_id, comment: @invoice.comment, payment_date: @invoice.payment_date, payment_status: @invoice.payment_status } }
+    patch(
+      invoice_url(@invoice),
+      params: {
+        invoice: {
+          bill_id: @invoice.bill_id,
+          comment: @invoice.comment,
+          payment_date: @invoice.payment_date,
+          payment_status: @invoice.payment_status
+        }
+      }
+    )
+
     assert_redirected_to invoice_url(@invoice)
   end
 

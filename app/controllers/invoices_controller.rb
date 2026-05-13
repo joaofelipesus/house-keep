@@ -23,27 +23,19 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
 
-    respond_to do |format|
-      if @invoice.save
-        format.html { redirect_to @invoice, notice: "Invoice was successfully created." }
-        format.json { render :show, status: :created, location: @invoice }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
+    if @invoice.save
+      redirect_to @invoice, notice: "Invoice was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /invoices/1 or /invoices/1.json
   def update
-    respond_to do |format|
-      if @invoice.update(invoice_params)
-        format.html { redirect_to @invoice, notice: "Invoice was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @invoice }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
+    if @invoice.update(invoice_params)
+      redirect_to @invoice, notice: "Invoice was successfully updated.", status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -51,10 +43,7 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to invoices_path, notice: "Invoice was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
+    redirect_to invoices_path, notice: "Invoice was successfully destroyed.", status: :see_other
   end
 
   private
@@ -65,6 +54,6 @@ class InvoicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def invoice_params
-      params.expect(invoice: [ :bill_id, :payment_status, :payment_date, :comment ])
+      params.expect(invoice: [ :bill_id, :payment_status, :payment_date, :comment, :due_date ])
     end
 end
