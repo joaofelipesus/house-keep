@@ -18,6 +18,6 @@ export default class extends Controller {
 
   #applyVisibility(isRecurring) {
     this.nonRecurringSectionTarget.style.display = isRecurring ? 'none' : 'flex'
-    this.recurringSectionTarget.style.display = isRecurring ? 'block' : 'none'
+    this.recurringSectionTarget.style.display = isRecurring ? 'flex' : 'none'
   }
 }
