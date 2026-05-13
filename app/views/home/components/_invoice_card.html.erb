@@ -1,0 +1,19 @@
+<%# locals: (invoice:) %>
+<div class="invoice-card">
+  <div class="invoice-card-logo">
+    <% if invoice.bill.company_logo.attached? %>
+      <%= image_tag invoice.bill.company_logo, class: "invoice-card-logo-img" %>
+    <% else %>
+      <span class="invoice-card-logo-placeholder"><%= invoice.bill.title.first.upcase %></span>
+    <% end %>
+  </div>
+
+  <div class="invoice-card-body">
+    <span class="invoice-card-title"><%= invoice.bill.title %></span>
+    <span class="invoice-card-due"><%= t('home.index.due_date', date: l(invoice.due_date, format: :short)) %></span>
+  </div>
+
+  <div class="invoice-card-amount">
+    <%= display_value(invoice.payment_amount) %>
+  </div>
+</div>
