@@ -60,7 +60,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_13_135655) do
     t.text "comment", comment: "A optional description of the invoice"
     t.datetime "created_at", null: false
     t.date "payment_date", comment: "The date when the bill was paid"
-    t.string "payment_status", null: false, comment: "A enum with the payment status of the invoice (pending, paid, delayed)"
+    t.string "payment_status", default: "pending", null: false, comment: "A enum with the payment status of the invoice (pending, paid, delayed)"
     t.datetime "updated_at", null: false
     t.index ["bill_id"], name: "index_invoices_on_bill_id"
   end
