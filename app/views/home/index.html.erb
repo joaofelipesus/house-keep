@@ -1,2 +1,30 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="page-header">
+  <h1 class="page-title"><%= t('.title') %></h1>
+</div>
+
+<% if @pending_invoices.any? %>
+  <div class="invoice-grid">
+    <% @pending_invoices.each do |invoice| %>
+      <div class="invoice-card">
+        <div class="invoice-card-logo">
+          <% if invoice.bill.company_logo.attached? %>
+            <%= image_tag invoice.bill.company_logo, class: "invoice-card-logo-img" %>
+          <% else %>
+            <span class="invoice-card-logo-placeholder"><%= invoice.bill.title.first.upcase %></span>
+          <% end %>
+        </div>
+
+        <div class="invoice-card-body">
+          <span class="invoice-card-title"><%= invoice.bill.title %></span>
+          <span class="invoice-card-due"><%= t('.due_date', date: l(invoice.due_date, format: :short)) %></span>
+        </div>
+
+        <div class="invoice-card-amount">
+          <%= display_value(invoice.payment_amount) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="home-empty"><%= t('.no_pending') %></p>
+<% end %>

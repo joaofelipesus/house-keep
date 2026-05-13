@@ -42,6 +42,12 @@ en:
         create: "Create bill"
         update: "Save changes"
 
+  home:
+    index:
+      title: "Pending bills this month"
+      due_date: "Due %{date}"
+      no_pending: "No pending bills this month."
+
   bills:
     form:
       company_logo_hint: "Click to upload an image (PNG, JPG, SVG)"

@@ -46,6 +46,12 @@ pt-BR:
         create: "Criar conta"
         update: "Salvar alterações"
 
+  home:
+    index:
+      title: "Contas pendentes do mês"
+      due_date: "Vence em %{date}"
+      no_pending: "Nenhuma conta pendente este mês."
+
   bills:
     form:
       company_logo_hint: "Clique para enviar uma imagem (PNG, JPG, SVG)"

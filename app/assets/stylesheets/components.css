@@ -218,3 +218,81 @@
 }
 
 .navbar-links a:hover { color: var(--color-primary); }
+
+/* ── Invoice cards (home) ─────────────────────────────── */
+
+.invoice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-lg);
+}
+
+.invoice-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.invoice-card-logo {
+  flex-shrink: 0;
+  width: calc(var(--base) * 11);
+  height: calc(var(--base) * 11);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.invoice-card-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.invoice-card-logo-placeholder {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.invoice-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base) * 0.5);
+  flex: 1;
+  min-width: 0;
+}
+
+.invoice-card-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.invoice-card-due {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.invoice-card-amount {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.home-empty {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+}
