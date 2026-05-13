@@ -1,13 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  bill: one
-  payment_status: MyString
-  payment_date: 2026-05-13
-  comment: MyText
+pending_invoice:
+  bill: internet
+  payment_status: pending
+  payment_date: null
+  comment: Waiting for payment
 
-two:
-  bill: two
-  payment_status: MyString
-  payment_date: 2026-05-13
-  comment: MyText
+paid_invoice:
+  bill: internet
+  payment_status: paid
+  payment_date: 2026-05-10
+  comment: Paid via credit card
+
+delayed_invoice:
+  bill: internet
+  payment_status: delayed
+  payment_date: null
+  comment: null
