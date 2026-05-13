@@ -2,7 +2,14 @@
 
 # Represents a bill template or scheduled.
 class Bill < ApplicationRecord
+  include Bills::Invoiceable
+
   has_one_attached :company_logo
+
+  enum(
+    :payment_method,
+    { credit_card: "credit_card", pix: "pix", bank_slip: "bank_slip" }
+  )
 
   validates :title, presence: true
   validates :title, uniqueness: true
