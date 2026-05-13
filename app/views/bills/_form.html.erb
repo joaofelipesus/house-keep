@@ -26,28 +26,34 @@
 
   <div
     class="form-field"
-    data-bills--form-target="dueDateSection"
+    data-bills--form-target="nonRecurringSection"
   >
     <%= form.label :due_date %>
     <%= form.date_field :due_date %>
   </div>
 
-  <div
-    class="form-field"
-    data-bills--form-target="recurrentDueDaySection"
-  >
-    <%= form.label :recurrent_due_day %>
-    <%= form.number_field :recurrent_due_day, min: 1, max: 31 %>
+  <div data-bills--form-target="recurringSection">
+    <div class="form-field">
+      <%= form.label :recurrent_due_day %>
+      <%= form.number_field :recurrent_due_day, min: 1, max: 31 %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :payment_method %>
+      <%=
+        form.select(
+          :payment_method,
+          Bill.payment_methods.keys.map { |k| [t("activerecord.attributes.bill.payment_methods.#{k}"), k] },
+          { include_blank: true },
+          { class: 'select-field' }
+        )
+      %>
+    </div>
   </div>
 
   <div class="form-field">
     <%= form.label :description %>
     <%= form.textarea :description %>
-  </div>
-
-  <div class="form-field">
-    <%= form.label :payment_method %>
-    <%= form.text_field :payment_method %>
   </div>
 
   <div class="form-field">

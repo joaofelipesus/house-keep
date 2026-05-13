@@ -10,6 +10,10 @@ en:
         recurring: "Recurring"
         description: "Description"
         payment_method: "Payment method"
+        payment_methods:
+          credit_card: "Credit card"
+          pix: "Pix"
+          bank_slip: "Bank slip"
         company_logo: "Company logo"
         recurrent_due_day: "Recurrent due day"
     errors:

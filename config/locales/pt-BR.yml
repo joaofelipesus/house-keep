@@ -12,6 +12,10 @@ pt-BR:
         recurring: "Recorrente"
         description: "Descrição"
         payment_method: "Forma de pagamento"
+        payment_methods:
+          credit_card: "Cartão de crédito"
+          pix: "Pix"
+          bank_slip: "Boleto bancário"
         company_logo: "Logo da empresa"
         recurrent_due_day: "Dia de vencimento recorrente"
     errors:

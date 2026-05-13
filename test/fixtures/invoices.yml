@@ -3,17 +3,23 @@
 pending_invoice:
   bill: internet
   payment_status: pending
+  due_date: 2026-05-20
   payment_date: null
+  payment_amount: null
   comment: Waiting for payment
 
 paid_invoice:
   bill: internet
   payment_status: paid
+  due_date: 2026-05-10
   payment_date: 2026-05-10
+  payment_amount: 99.90
   comment: Paid via credit card
 
 delayed_invoice:
   bill: internet
   payment_status: delayed
+  due_date: 2026-04-17
   payment_date: null
+  payment_amount: 149.90
   comment: null

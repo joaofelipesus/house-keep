@@ -4,31 +4,20 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [
     'recurringInput',
-    'dueDateSection',
-    'recurrentDueDaySection'
+    'nonRecurringSection',
+    'recurringSection'
   ]
 
   connect() {
-    const isRecurring = this.recurringInputTarget.checked
-
-    if (isRecurring) {
-      this.dueDateSectionTarget.style.display = 'none'
-      this.recurrentDueDaySectionTarget.style.display = 'flex'
-    } else {
-      this.dueDateSectionTarget.style.display = 'flex'
-      this.recurrentDueDaySectionTarget.style.display = 'none'
-    }
+    this.#applyVisibility(this.recurringInputTarget.checked)
   }
 
-  toggleRecurring (event) {
-    const isRecurrentBill = event.target.checked
+  toggleRecurring(event) {
+    this.#applyVisibility(event.target.checked)
+  }
 
-    if (isRecurrentBill) {
-      this.dueDateSectionTarget.style.display = 'none'
-      this.recurrentDueDaySectionTarget.style.display = 'flex'
-    } else {
-      this.dueDateSectionTarget.style.display = 'flex'
-      this.recurrentDueDaySectionTarget.style.display = 'none'
-    }
+  #applyVisibility(isRecurring) {
+    this.nonRecurringSectionTarget.style.display = isRecurring ? 'none' : 'flex'
+    this.recurringSectionTarget.style.display = isRecurring ? 'block' : 'none'
   }
 }
