@@ -1,13 +1,29 @@
-<div class="page-header">
-  <h1 class="page-title"><%= t('.title') %></h1>
-</div>
-
-<% if @pending_invoices.any? %>
-  <div class="invoice-grid">
-    <% @pending_invoices.each do |invoice| %>
-      <%= render partial: 'home/components/invoice_card', locals: { invoice: } %>
-    <% end %>
+<div data-controller="home--modal">
+  <div class="page-header">
+    <h1 class="page-title"><%= t('.title') %></h1>
   </div>
-<% else %>
-  <p class="home-empty"><%= t('.no_pending') %></p>
-<% end %>
+
+  <% if @pending_invoices.any? %>
+    <div class="invoice-grid">
+      <% @pending_invoices.each do |invoice| %>
+        <%= render partial: 'home/components/invoice_card', locals: { invoice: } %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="home-empty"><%= t('.no_pending') %></p>
+  <% end %>
+
+  <div class="modal-overlay"
+       data-home--modal-target="overlay"
+       data-action="click->home--modal#closeOnBackdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title"><%= t('.update_invoice') %></span>
+        <button class="modal-close" data-action="click->home--modal#close">✕</button>
+      </div>
+      <div class="modal-body">
+        <turbo-frame id="invoice-modal-frame" data-home--modal-target="frame"></turbo-frame>
+      </div>
+    </div>
+  </div>
+</div>
