@@ -28,3 +28,13 @@ gym:
   due_date: 2026-06-01
   recurrent_due_day: null
   description: Annual gym membership
+
+phone:
+  recurring: true
+  recurring_status: active
+  value: 50.00
+  title: Phone Plan
+  due_date: null
+  recurrent_due_day: 5
+  description: Monthly phone plan
+  payment_method: pix
