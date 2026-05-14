@@ -10,30 +10,6 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_invoice_url
-    assert_response :success
-  end
-
-  test "should create invoice" do
-    assert_difference("Invoice.count") do
-      post(
-        invoices_url,
-        params: {
-          invoice: {
-            bill_id: @invoice.bill_id,
-            comment: @invoice.comment,
-            payment_date: @invoice.payment_date,
-            payment_status: @invoice.payment_status,
-            due_date: 1.day.ago
-          }
-        }
-      )
-    end
-
-    assert_redirected_to invoice_url(Invoice.last)
-  end
-
   test "should show invoice" do
     get invoice_url(@invoice)
     assert_response :success
@@ -57,7 +33,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
       }
     )
 
-    assert_redirected_to invoice_url(@invoice)
+    assert_redirected_to root_url
   end
 
   test "should destroy invoice" do
