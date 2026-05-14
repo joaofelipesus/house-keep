@@ -18,6 +18,14 @@ pt-BR:
           bank_slip: "Boleto bancário"
         company_logo: "Logo da empresa"
         recurrent_due_day: "Dia de vencimento recorrente"
+      invoice:
+        payment_status: "Status"
+        payment_date: "Data de pagamento"
+        payment_amount: "Valor pago"
+        payment_statuses:
+          pending: "Pendente"
+          paid: "Pago"
+          delayed: "Atrasado"
     errors:
       models:
         bill:
@@ -45,12 +53,15 @@ pt-BR:
       bill:
         create: "Criar conta"
         update: "Salvar alterações"
+      invoice:
+        update: "Salvar alterações"
 
   home:
     index:
       title: "Contas pendentes do mês"
       due_date: "Vence em %{date}"
       no_pending: "Nenhuma conta pendente este mês."
+      update_invoice: "Atualizar fatura"
 
   bills:
     form:

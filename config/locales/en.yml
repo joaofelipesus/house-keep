@@ -16,6 +16,14 @@ en:
           bank_slip: "Bank slip"
         company_logo: "Company logo"
         recurrent_due_day: "Recurrent due day"
+      invoice:
+        payment_status: "Status"
+        payment_date: "Payment date"
+        payment_amount: "Amount paid"
+        payment_statuses:
+          pending: "Pending"
+          paid: "Paid"
+          delayed: "Delayed"
     errors:
       models:
         bill:
@@ -41,12 +49,15 @@ en:
       bill:
         create: "Create bill"
         update: "Save changes"
+      invoice:
+        update: "Save changes"
 
   home:
     index:
       title: "Pending bills this month"
       due_date: "Due %{date}"
       no_pending: "No pending bills this month."
+      update_invoice: "Update invoice"
 
   bills:
     form:
