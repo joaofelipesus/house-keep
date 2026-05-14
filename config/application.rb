@@ -32,5 +32,8 @@ module HouseKeep
     config.generators do |g|
       g.helper false
     end
+
+    config.mission_control.jobs.base_controller_class = 'JobsDashboardController'
+    config.mission_control.jobs.http_basic_auth_enabled = false
   end
 end
