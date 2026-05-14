@@ -1,37 +1,23 @@
-<%= form_with(model: invoice) do |form| %>
-  <% if invoice.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+<%# locals: (invoice:) %>
+<%= form_with(model: invoice, class: "form") do |form| %>
+  <%= render partial: 'layouts/components/forms/errors', locals: { record: invoice } %>
 
-      <ul>
-        <% invoice.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :bill_id, style: "display: block" %>
-    <%= form.text_field :bill_id %>
+  <div class="form-field">
+    <%= form.label :payment_status %>
+    <%= invoice.show_current_payment_status %>
   </div>
 
-  <div>
-    <%= form.label :payment_status, style: "display: block" %>
-    <%= form.text_field :payment_status %>
-  </div>
-
-  <div>
-    <%= form.label :payment_date, style: "display: block" %>
+  <div class="form-field">
+    <%= form.label :payment_date %>
     <%= form.date_field :payment_date %>
   </div>
 
-  <div>
-    <%= form.label :comment, style: "display: block" %>
-    <%= form.textarea :comment %>
+  <div class="form-field">
+    <%= form.label :payment_amount %>
+    <%= form.text_field :payment_amount %>
   </div>
 
-  <div>
+  <div class="form-submit">
     <%= form.submit %>
   </div>
 <% end %>

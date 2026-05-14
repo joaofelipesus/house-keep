@@ -1,12 +1,3 @@
-<% content_for :title, "Editing invoice" %>
-
-<h1>Editing invoice</h1>
-
-<%= render "form", invoice: @invoice %>
-
-<br>
-
-<div>
-  <%= link_to "Show this invoice", @invoice %> |
-  <%= link_to "Back to invoices", invoices_path %>
-</div>
+<turbo-frame id="invoice-modal-frame">
+  <%= render 'form', invoice: @invoice %>
+</turbo-frame>
