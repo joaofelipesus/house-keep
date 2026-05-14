@@ -1,26 +1,28 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class InvoicesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @invoice = invoices(:delayed_invoice)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get invoices_url
     assert_response :success
   end
 
-  test "should show invoice" do
+  test 'should show invoice' do
     get invoice_url(@invoice)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_invoice_url(@invoice)
     assert_response :success
   end
 
-  test "should update invoice" do
+  test 'should update invoice' do
     patch(
       invoice_url(@invoice),
       params: {
@@ -36,8 +38,8 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  test "should destroy invoice" do
-    assert_difference("Invoice.count", -1) do
+  test 'should destroy invoice' do
+    assert_difference('Invoice.count', -1) do
       delete invoice_url(@invoice)
     end
 

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: %i[ show edit update destroy ]
+  before_action :set_invoice, only: %i[show edit update destroy]
 
   # GET /invoices or /invoices.json
   def index
@@ -7,12 +9,10 @@ class InvoicesController < ApplicationController
   end
 
   # GET /invoices/1 or /invoices/1.json
-  def show
-  end
+  def show; end
 
   # GET /invoices/1/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /invoices/1 or /invoices/1.json
   def update
@@ -22,7 +22,7 @@ class InvoicesController < ApplicationController
         format.html { redirect_to root_path, status: :see_other }
       end
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -30,17 +30,18 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice.destroy!
 
-    redirect_to invoices_path, notice: "Invoice was successfully destroyed.", status: :see_other
+    redirect_to invoices_path, notice: 'Invoice was successfully destroyed.', status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invoice
-      @invoice = Invoice.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def invoice_params
-      params.expect(invoice: [ :bill_id, :payment_status, :payment_date, :payment_amount, :comment, :due_date ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invoice
+    @invoice = Invoice.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def invoice_params
+    params.expect(invoice: %i[bill_id payment_status payment_date payment_amount comment due_date])
+  end
 end

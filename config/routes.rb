@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :invoices, only: [:index, :show, :edit, :update, :destroy]
+  resources :invoices, only: %i[index show edit update destroy]
   resources :bills
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

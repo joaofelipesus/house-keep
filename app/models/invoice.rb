@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Invoice < ApplicationRecord
   belongs_to :bill
 
@@ -5,8 +7,8 @@ class Invoice < ApplicationRecord
 
   enum(
     :payment_status,
-    { pending: "pending", paid: "paid", delayed: "delayed" },
-    default: "pending"
+    { pending: 'pending', paid: 'paid', delayed: 'delayed' },
+    default: 'pending'
   )
 
   def show_current_payment_status

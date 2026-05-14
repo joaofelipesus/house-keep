@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class BillsTest < ActiveSupport::TestCase
-  test "creates invoice for non-recurring bill" do
+  test 'creates invoice for non-recurring bill' do
     bill = Bill.create_bill_with_invoices(
-      title: "Água",
+      title: 'Água',
       value: 80.00,
       recurring: false,
       due_date: Date.new(2026, 6, 10)
@@ -19,9 +19,9 @@ class BillsTest < ActiveSupport::TestCase
     assert_equal 80.00, invoice.payment_amount.to_f
   end
 
-  test "creates invoice for recurring bill" do
+  test 'creates invoice for recurring bill' do
     bill = Bill.create_bill_with_invoices(
-      title: "Streaming",
+      title: 'Streaming',
       value: 45.90,
       recurring: true,
       recurrent_due_day: 28
@@ -35,14 +35,14 @@ class BillsTest < ActiveSupport::TestCase
     assert_equal 45.90, invoice.payment_amount.to_f
   end
 
-  test "returns bill with errors when params are invalid" do
+  test 'returns bill with errors when params are invalid' do
     bill = Bill.create_bill_with_invoices(
       value: 50.00,
       recurring: false,
-      due_date: Date.today
+      due_date: Time.zone.today
     )
 
     assert_not bill.persisted?
-    assert_equal ["não pode ficar em branco"], bill.errors[:title]
+    assert_equal ['não pode ficar em branco'], bill.errors[:title]
   end
 end

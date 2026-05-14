@@ -11,7 +11,6 @@ module Bills
         transaction do
           bill.save!
           bill.create_invoices!
-
         rescue ActiveRecord::RecordInvalid => e
           bill.errors.add(:base, e.message) if bill.errors.empty?
         end
@@ -21,13 +20,13 @@ module Bills
     end
 
     def create_invoices!
-      invoice = Invoice.new( bill: self, payment_status: :pending, payment_amount: self.value)
+      invoice = Invoice.new(bill: self, payment_status: :pending, payment_amount: value)
 
-      if non_recurring?
-        invoice.due_date = self.due_date
-      else
-        invoice.due_date = next_invoice_non_recurring_due_date
-      end
+      invoice.due_date = if non_recurring?
+                           due_date
+                         else
+                           next_invoice_non_recurring_due_date
+                         end
 
       invoice.save!
     end

@@ -10,7 +10,7 @@ class Bill < ApplicationRecord
 
   enum(
     :payment_method,
-    { credit_card: "credit_card", pix: "pix", bank_slip: "bank_slip" }
+    { credit_card: 'credit_card', pix: 'pix', bank_slip: 'bank_slip' }
   )
 
   validates :title, presence: true
