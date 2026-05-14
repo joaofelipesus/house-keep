@@ -13,6 +13,12 @@ class Bill < ApplicationRecord
     { credit_card: 'credit_card', pix: 'pix', bank_slip: 'bank_slip' }
   )
 
+  enum(
+    :recurring_status,
+    { active: 'active', inactive: 'inactive' },
+    default: :active
+  )
+
   validates :title, presence: true
   validates :title, uniqueness: true
 

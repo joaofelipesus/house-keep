@@ -2,9 +2,29 @@
 
 internet:
   recurring: true
+  recurring_status: active
   value: null
   title: Internet Bill
   due_date: null
   recurrent_due_day: 17
   description: Monthly internet bill
   payment_method: credit_card
+
+streaming:
+  recurring: true
+  recurring_status: inactive
+  value: 39.90
+  title: Streaming Service
+  due_date: null
+  recurrent_due_day: 10
+  description: Monthly streaming subscription
+  payment_method: credit_card
+
+gym:
+  recurring: false
+  recurring_status: active
+  value: 120.00
+  title: Gym Annual Plan
+  due_date: 2026-06-01
+  recurrent_due_day: null
+  description: Annual gym membership

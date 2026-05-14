@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_13_200002) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_14_180143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -49,6 +49,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_13_200002) do
     t.string "payment_method", comment: "An enum with the payment method, e.g. credit card, or pix"
     t.integer "recurrent_due_day", comment: "The day where the bill must be paied, it's used only on recurrent bills"
     t.boolean "recurring", comment: "Define if the bill is paid every month"
+    t.string "recurring_status", default: "active", null: false, comment: "current status of the bill, used on recurring bills as active and inactive"
     t.string "title", null: false, comment: "a simple description"
     t.datetime "updated_at", null: false
     t.decimal "value", precision: 10, scale: 2, comment: "bill value"

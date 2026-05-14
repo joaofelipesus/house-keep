@@ -19,4 +19,14 @@ class BillTest < ActiveSupport::TestCase
 
     assert_equal bill.errors[:title], ['já está em uso']
   end
+
+  test 'defaults recurring_status to active' do
+    bill = Bill.new
+
+    assert_equal 'active', bill.recurring_status
+  end
+
+  test 'recurring_status enum values' do
+    assert_equal({ 'active' => 'active', 'inactive' => 'inactive' }, Bill.recurring_statuses)
+  end
 end
