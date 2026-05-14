@@ -1,7 +1,7 @@
 class Invoice < ApplicationRecord
   belongs_to :bill
 
-  validates :due_date, presence: true
+  validates :due_date, :payment_amount, presence: true
 
   enum(
     :payment_status,

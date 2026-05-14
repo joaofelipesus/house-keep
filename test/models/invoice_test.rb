@@ -15,6 +15,13 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal invoice.errors[:due_date], ["não pode ficar em branco"]
   end
 
+  test "requires a payment_amount" do
+    invoice = Invoice.new(payment_status: :pending)
+
+    assert_not invoice.valid?
+    assert_equal invoice.errors[:payment_amount], ["não pode ficar em branco"]
+  end
+
   test "defaults payment_status to pending" do
     invoice = Invoice.new
     assert invoice.pending?
