@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/joaofelipe/Documents/studies/ruby/house-keep && docker-compose exec -T app ./bin/rails test",
+            "timeout": 120,
+            "statusMessage": "Running test suite..."
+          }
+        ]
+      }
+    ]
+  }
+}
