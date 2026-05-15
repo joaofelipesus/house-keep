@@ -1,4 +1,10 @@
 pt-BR:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d/%m"
+      long: "%d de %B de %Y"
+
   activerecord:
     models:
       bill:
@@ -54,7 +60,7 @@ pt-BR:
         create: "Criar conta"
         update: "Salvar alterações"
       invoice:
-        update: "Salvar alterações"
+        update: "Confirmar pagamento"
 
   home:
     index:
@@ -62,6 +68,10 @@ pt-BR:
       due_date: "Vence em %{date}"
       no_pending: "Nenhuma conta pendente este mês."
       update_invoice: "Atualizar fatura"
+
+  invoices:
+    form:
+      payment_hint: "Ao salvar, a fatura será marcada como paga."
 
   bills:
     form:
