@@ -1,0 +1,37 @@
+services:
+  postgres:
+    environment:
+      POSTGRES_USER: house_keep
+      POSTGRES_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      HOUSE_KEEP_DATABASE_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost/up || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["./bin/jobs"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+    environment:
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      HOUSE_KEEP_DATABASE_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
+    restart: unless-stopped

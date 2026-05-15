@@ -1,0 +1,28 @@
+services:
+  postgres:
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: >
+      bash -c "rm -f tmp/pids/server.pid &&
+               (bundle check || bundle install) &&
+               ./bin/rails db:create db:migrate &&
+               ./bin/dev"
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - gems:/gems
+    environment:
+      RAILS_ENV: development
+
+volumes:
+  gems:

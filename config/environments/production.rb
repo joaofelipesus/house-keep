@@ -5,6 +5,9 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Use SECRET_KEY_BASE env var instead of encrypted credentials.
+  config.require_master_key = false
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
