@@ -1,0 +1,37 @@
+<% content_for :title, t('.title') %>
+
+<div class="page-header">
+  <h1 class="page-title"><%= t('.title') %></h1>
+  <%= link_to t('.new_income'), new_current_income_path, class: "btn btn-primary" %>
+</div>
+
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= CurrentIncome.human_attribute_name(:value) %></th>
+        <th><%= CurrentIncome.human_attribute_name(:status) %></th>
+        <th><%= CurrentIncome.human_attribute_name(:created_at) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @current_incomes.any? %>
+        <% @current_incomes.each do |income| %>
+          <tr>
+            <td class="table-value">
+              <%= number_to_currency(income.value, unit: "R$", separator: ",", delimiter: ".") %>
+            </td>
+            <td class="table-muted">
+              <%= t("activerecord.attributes.current_income.statuses.#{income.status}") %>
+            </td>
+            <td class="table-muted"><%= l(income.created_at, format: :short) %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="3" class="table-empty"><%= t('.no_incomes') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

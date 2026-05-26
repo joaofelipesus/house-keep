@@ -57,10 +57,15 @@
 
   <div class="form-field">
     <%= form.label :company_logo, class: "file-upload" do %>
-      <%= form.file_field :company_logo, accept: "image/*", class: "file-upload-input" %>
+      <%= form.file_field :company_logo, accept: "image/*", class: "file-upload-input",
+            data: { action: "change->bills--form#previewLogo" } %>
       <span class="file-upload-label"><%= Bill.human_attribute_name(:company_logo) %></span>
-      <span class="file-upload-hint"><%= t('.company_logo_hint') %></span>
+      <span class="file-upload-hint" data-bills--form-target="logoHint"><%= t('.company_logo_hint') %></span>
     <% end %>
+    <%= image_tag bill.company_logo.attached? ? bill.company_logo.variant(resize_to_limit: [64, 64]) : "",
+          class: "company-logo-thumb",
+          hidden: true,
+          data: { "bills--form-target" => "logoPreview" } %>
   </div>
 
   <div class="form-submit">
