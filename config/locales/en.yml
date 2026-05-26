@@ -2,6 +2,9 @@ en:
   activerecord:
     models:
       bill: "Bill"
+      current_income:
+        one: "Income"
+        other: "Incomes"
     attributes:
       bill:
         title: "Title"
@@ -24,6 +27,12 @@ en:
           pending: "Pending"
           paid: "Paid"
           delayed: "Delayed"
+      current_income:
+        value: "Value"
+        status: "Status"
+        statuses:
+          active: "Active"
+          outdated: "Outdated"
     errors:
       models:
         bill:
@@ -35,6 +44,10 @@ en:
               blank: "can't be blank"
             due_date:
               blank: "can't be blank"
+        current_income:
+          attributes:
+            value:
+              blank: "can't be blank"
 
   layouts:
     components:
@@ -43,6 +56,10 @@ en:
           header:
             one: "1 error prohibited this %{model} from being saved:"
             other: "%{count} errors prohibited this %{model} from being saved:"
+      navbar:
+        current_incomes: "Incomes"
+        income_label: "Current income"
+        no_income: "Not set"
 
   helpers:
     submit:
@@ -51,6 +68,8 @@ en:
         update: "Save changes"
       invoice:
         update: "Save changes"
+      current_income:
+        create: "Save income"
 
   home:
     index:
@@ -58,6 +77,15 @@ en:
       due_date: "Due %{date}"
       no_pending: "No pending bills this month."
       update_invoice: "Update invoice"
+
+  current_incomes:
+    index:
+      title: "Income history"
+      new_income: "New income"
+      no_incomes: "No incomes recorded."
+    new:
+      title: "New income"
+      back: "Back"
 
   bills:
     form:

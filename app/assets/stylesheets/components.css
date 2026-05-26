@@ -209,6 +209,11 @@
   letter-spacing: -0.02em;
 }
 
+.navbar-links {
+  display: flex;
+  gap: var(--space-xl);
+}
+
 .navbar-links a {
   text-decoration: none;
   font-size: var(--text-sm);
@@ -218,6 +223,27 @@
 }
 
 .navbar-links a:hover { color: var(--color-primary); }
+
+.navbar-income {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.navbar-income-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.navbar-income-value {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+}
 
 /* ── Invoice cards (home) ─────────────────────────────── */
 

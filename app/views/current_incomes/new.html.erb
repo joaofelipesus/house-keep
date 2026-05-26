@@ -1,0 +1,11 @@
+<% content_for :title, t('.title') %>
+
+<h1><%= t('.title') %></h1>
+
+<%= render "form", current_income: @current_income %>
+
+<br>
+
+<div>
+  <%= link_to t('.back'), current_incomes_path %>
+</div>
