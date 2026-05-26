@@ -10,6 +10,9 @@ pt-BR:
       bill:
         one: "Conta"
         other: "Contas"
+      current_income:
+        one: "Renda"
+        other: "Rendas"
     attributes:
       bill:
         title: "Título"
@@ -32,6 +35,12 @@ pt-BR:
           pending: "Pendente"
           paid: "Pago"
           delayed: "Atrasado"
+      current_income:
+        value: "Valor"
+        status: "Status"
+        statuses:
+          active: "Ativo"
+          outdated: "Desatualizado"
     errors:
       models:
         bill:
@@ -45,6 +54,10 @@ pt-BR:
               blank: "não pode ficar em branco"
             recurrent_due_day:
               blank: "não pode ficar em branco"
+        current_income:
+          attributes:
+            value:
+              blank: "não pode ficar em branco"
 
   layouts:
     components:
@@ -53,6 +66,10 @@ pt-BR:
           header:
             one: "1 erro impediu este %{model} de ser salvo:"
             other: "%{count} erros impediram este %{model} de ser salvo:"
+      navbar:
+        current_incomes: "Rendas"
+        income_label: "Renda atual"
+        no_income: "Não definida"
 
   helpers:
     submit:
@@ -61,6 +78,8 @@ pt-BR:
         update: "Salvar alterações"
       invoice:
         update: "Confirmar pagamento"
+      current_income:
+        create: "Salvar renda"
 
   home:
     index:
@@ -72,6 +91,15 @@ pt-BR:
   invoices:
     form:
       payment_hint: "Ao salvar, a fatura será marcada como paga."
+
+  current_incomes:
+    index:
+      title: "Histórico de rendas"
+      new_income: "Nova renda"
+      no_incomes: "Nenhuma renda cadastrada."
+    new:
+      title: "Nova renda"
+      back: "Voltar"
 
   bills:
     form:

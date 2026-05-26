@@ -1,0 +1,7 @@
+active_income:
+  value: 5000.00
+  status: active
+
+outdated_income:
+  value: 4000.00
+  status: outdated

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :current_incomes, only: %i[index new create]
   resources :invoices, only: %i[index show edit update destroy]
   resources :bills
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

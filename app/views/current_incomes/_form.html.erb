@@ -1,0 +1,14 @@
+<%# locals: (current_income:) %>
+
+<%= form_with(model: current_income, class: "form") do |form| %>
+  <%= render(partial: "layouts/components/forms/errors", locals: { record: current_income }) %>
+
+  <div class="form-field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="form-submit">
+    <%= form.submit %>
+  </div>
+<% end %>

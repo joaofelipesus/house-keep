@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_14_180143) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_26_014352) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -54,6 +54,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_14_180143) do
     t.datetime "updated_at", null: false
     t.decimal "value", precision: 10, scale: 2, comment: "bill value"
     t.index ["title"], name: "index_bills_on_title", unique: true
+  end
+
+  create_table "current_incomes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "status", default: "active", null: false, comment: "active | outdated"
+    t.datetime "updated_at", null: false
+    t.decimal "value", precision: 10, scale: 2, null: false, comment: "Monthly income amount"
   end
 
   create_table "invoices", comment: "Invoices related to a bill, is the model that store the act of payment", force: :cascade do |t|
