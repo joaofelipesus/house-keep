@@ -10,6 +10,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+    volumes:
+      - storage:/rails/storage
     environment:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       HOUSE_KEEP_DATABASE_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
@@ -35,3 +37,6 @@ services:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       HOUSE_KEEP_DATABASE_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
     restart: unless-stopped
+
+volumes:
+  storage:
