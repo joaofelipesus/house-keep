@@ -3,7 +3,7 @@
 internet:
   recurring: true
   recurring_status: active
-  value: null
+  value: 99.90
   title: Internet Bill
   due_date: null
   recurrent_due_day: 17

@@ -8,6 +8,11 @@ class Bill < ApplicationRecord
 
   has_one_attached :company_logo
 
+  validates :title, :value, presence: true
+  validates :title, uniqueness: true
+  validates :recurrent_due_day, presence: true, if: :recurring?
+  validates :due_date, presence: true, if: :non_recurring?
+
   enum(
     :payment_method,
     { credit_card: 'credit_card', pix: 'pix', bank_slip: 'bank_slip' }
@@ -18,12 +23,6 @@ class Bill < ApplicationRecord
     { active: 'active', inactive: 'inactive' },
     default: :active
   )
-
-  validates :title, presence: true
-  validates :title, uniqueness: true
-
-  validates :recurrent_due_day, presence: true, if: :recurring?
-  validates :due_date, presence: true, if: :non_recurring?
 
   private
 

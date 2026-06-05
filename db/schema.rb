@@ -11,9 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.1].define(version: 2026_05_26_014352) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -44,33 +41,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_26_014352) do
 
   create_table "bills", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.text "description", comment: "an optional text with a detailed description"
-    t.date "due_date", comment: "when the bill is charged"
-    t.string "payment_method", comment: "An enum with the payment method, e.g. credit card, or pix"
-    t.integer "recurrent_due_day", comment: "The day where the bill must be paied, it's used only on recurrent bills"
-    t.boolean "recurring", comment: "Define if the bill is paid every month"
-    t.string "recurring_status", default: "active", null: false, comment: "current status of the bill, used on recurring bills as active and inactive"
-    t.string "title", null: false, comment: "a simple description"
+    t.text "description"
+    t.date "due_date"
+    t.string "payment_method"
+    t.integer "recurrent_due_day"
+    t.boolean "recurring"
+    t.string "recurring_status", default: "active", null: false
+    t.string "title", null: false
     t.datetime "updated_at", null: false
-    t.decimal "value", precision: 10, scale: 2, comment: "bill value"
+    t.decimal "value", precision: 10, scale: 2
     t.index ["title"], name: "index_bills_on_title", unique: true
   end
 
   create_table "current_incomes", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.string "status", default: "active", null: false, comment: "active | outdated"
+    t.string "status", default: "active", null: false
     t.datetime "updated_at", null: false
-    t.decimal "value", precision: 10, scale: 2, null: false, comment: "Monthly income amount"
+    t.decimal "value", precision: 10, scale: 2, null: false
   end
 
-  create_table "invoices", comment: "Invoices related to a bill, is the model that store the act of payment", force: :cascade do |t|
+  create_table "invoices", force: :cascade do |t|
     t.bigint "bill_id", null: false
-    t.text "comment", comment: "A optional description of the invoice"
+    t.text "comment"
     t.datetime "created_at", null: false
-    t.date "due_date", null: false, comment: "The date when the invoice is due"
-    t.decimal "payment_amount", precision: 10, scale: 2, comment: "The actual amount paid for the invoice"
-    t.date "payment_date", comment: "The date when the bill was paid"
-    t.string "payment_status", default: "pending", null: false, comment: "A enum with the payment status of the invoice (pending, paid, delayed)"
+    t.date "due_date", null: false
+    t.decimal "payment_amount", precision: 10, scale: 2
+    t.date "payment_date"
+    t.string "payment_status", default: "pending", null: false
     t.datetime "updated_at", null: false
     t.index ["bill_id"], name: "index_invoices_on_bill_id"
   end

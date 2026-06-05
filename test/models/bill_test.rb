@@ -11,6 +11,13 @@ class BillTest < ActiveSupport::TestCase
     assert_equal bill.errors[:due_date], ['não pode ficar em branco']
   end
 
+  test 'value is required' do
+    bill = Bill.new(title: 'Test', recurring: false, due_date: Date.current)
+
+    assert_not bill.valid?
+    assert_equal bill.errors[:value], ['não pode ficar em branco']
+  end
+
   test 'unique validations' do
     bill = Bill.new
     bill.title = bills(:internet).title

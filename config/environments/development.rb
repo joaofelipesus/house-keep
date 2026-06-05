@@ -2,6 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
+# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -82,3 +83,4 @@ Rails.application.configure do
   config.solid_queue.connects_to = { database: { writing: :queue } }
   config.solid_queue.logger = ActiveSupport::TaggedLogging.logger($stdout)
 end
+# rubocop:enable Metrics/BlockLength
