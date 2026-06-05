@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CurrentIncomesController < ApplicationController
   def index
     @current_incomes = CurrentIncome.order(created_at: :desc)
@@ -12,7 +14,7 @@ class CurrentIncomesController < ApplicationController
     if @current_income.save
       redirect_to current_incomes_path
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
