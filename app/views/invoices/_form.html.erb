@@ -4,7 +4,7 @@
 
   <div class="form-field">
     <%= form.label :payment_status %>
-    <%= invoice.show_current_payment_status %>
+    <%= form.select :payment_status, Invoice.payment_statuses.keys.map { |s| [t("activerecord.attributes.invoice.payment_statuses.#{s}"), s] } %>
   </div>
 
   <div class="form-field">

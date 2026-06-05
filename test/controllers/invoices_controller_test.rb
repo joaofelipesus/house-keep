@@ -38,6 +38,22 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test 'should update invoice payment_status' do
+    patch(
+      invoice_url(@invoice),
+      params: {
+        invoice: {
+          payment_status: 'paid',
+          payment_date: Date.current,
+          payment_amount: @invoice.payment_amount
+        }
+      }
+    )
+
+    assert_redirected_to root_url
+    assert_equal 'paid', @invoice.reload.payment_status
+  end
+
   test 'should destroy invoice' do
     assert_difference('Invoice.count', -1) do
       delete invoice_url(@invoice)
