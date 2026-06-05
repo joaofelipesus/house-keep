@@ -29,7 +29,7 @@ class BillsControllerTest < ActionDispatch::IntegrationTest
             recurrent_due_day: 15,
             recurring: '1', # checked value
             title: 'Light',
-            value: nil
+            value: 45
           }
         }
       )

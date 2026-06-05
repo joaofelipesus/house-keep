@@ -5,9 +5,7 @@ class Bills::CreateInvoiceJob < ApplicationJob
 
   def perform
     Bill.active.where(recurring: true).find_each do |bill|
-      next if bill.invoices.where(due_date: Date.current.all_month).any?
-
-      bill.create_invoices!
+      bill.create_invoice!
     end
   end
 end

@@ -10,7 +10,7 @@ module Bills
 
         transaction do
           bill.save!
-          bill.create_invoices!
+          bill.create_invoice!
         rescue ActiveRecord::RecordInvalid => e
           bill.errors.add(:base, e.message) if bill.errors.empty?
         end
@@ -19,7 +19,9 @@ module Bills
       end
     end
 
-    def create_invoices!
+    def create_invoice!
+      return if invoices.where(due_date: Date.current.all_month).any?
+
       invoice = Invoice.new(bill: self, payment_status: :pending, payment_amount: value)
 
       invoice.due_date = if non_recurring?

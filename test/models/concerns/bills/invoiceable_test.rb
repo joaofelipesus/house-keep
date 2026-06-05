@@ -20,19 +20,21 @@ class BillsTest < ActiveSupport::TestCase
   end
 
   test 'creates invoice for recurring bill' do
-    bill = Bill.create_bill_with_invoices(
-      title: 'Streaming',
-      value: 45.90,
-      recurring: true,
-      recurrent_due_day: 28
-    )
+    travel_to Date.new(2026, 5, 1) do
+      bill = Bill.create_bill_with_invoices(
+        title: 'Streaming',
+        value: 45.90,
+        recurring: true,
+        recurrent_due_day: 28
+      )
 
-    invoice = Invoice.find_by(bill: bill)
+      invoice = Invoice.find_by(bill: bill)
 
-    assert bill.persisted?
-    assert_not_nil invoice
-    assert_equal Date.new(2026, 5, 28), invoice.due_date
-    assert_equal 45.90, invoice.payment_amount.to_f
+      assert bill.persisted?
+      assert_not_nil invoice
+      assert_equal Date.new(2026, 5, 28), invoice.due_date
+      assert_equal 45.90, invoice.payment_amount.to_f
+    end
   end
 
   test 'returns bill with errors when params are invalid' do
