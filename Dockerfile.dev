@@ -7,10 +7,9 @@ RUN apt-get update -qq && \
     build-essential \
     curl \
     git \
-    libpq-dev \
+    libsqlite3-dev \
     libyaml-dev \
-    pkg-config \
-    postgresql-client && \
+    pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 ENV BUNDLE_PATH=/gems \

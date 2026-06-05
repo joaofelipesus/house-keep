@@ -1,9 +1,4 @@
 services:
-  postgres:
-    environment:
-      POSTGRES_USER: house_keep
-      POSTGRES_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
-
   app:
     build:
       context: .
@@ -14,7 +9,6 @@ services:
       - storage:/rails/storage
     environment:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-      HOUSE_KEEP_DATABASE_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost/up || exit 1"]
@@ -29,13 +23,12 @@ services:
       dockerfile: Dockerfile
     command: ["./bin/jobs"]
     depends_on:
-      postgres:
-        condition: service_healthy
       app:
         condition: service_healthy
+    volumes:
+      - storage:/rails/storage
     environment:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-      HOUSE_KEEP_DATABASE_PASSWORD: ${HOUSE_KEEP_DATABASE_PASSWORD}
     restart: unless-stopped
 
 volumes:
