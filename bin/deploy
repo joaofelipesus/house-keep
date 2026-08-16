@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#
+# Local production deploy: pull the latest code, rebuild the image and bring the
+# stack back up in production mode.
+#
+#   ./bin/deploy
+#
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+compose() {
+  docker compose -f docker-compose.yml -f docker-compose.prod.yml "$@"
+}
+
+if [ ! -f .env ]; then
+  echo "Missing .env file. Create it in the project root with:" >&2
+  echo "  SECRET_KEY_BASE=<run: openssl rand -hex 64>" >&2
+  echo "  HOUSE_KEEP_DATABASE_PASSWORD=<choose a password>" >&2
+  exit 1
+fi
+
+echo "==> Pulling the latest changes"
+git pull
+
+echo "==> Stopping the running containers"
+compose down
+
+echo "==> Building the production image"
+compose build
+
+echo "==> Starting in production"
+compose up -d
+
+echo "==> Done"
+compose ps
