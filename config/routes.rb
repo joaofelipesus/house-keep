@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resource :session, only: %i[new create destroy]
   resources :current_incomes, only: %i[index new create]
   resources :invoices, only: %i[index show edit update destroy] do
     get :paid, on: :collection
