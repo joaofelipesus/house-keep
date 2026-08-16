@@ -1,17 +1,12 @@
 <div data-controller="home--modal">
   <div class="page-header">
     <h1 class="page-title"><%= t('.title') %></h1>
+    <div class="page-actions">
+      <%= link_to t('.paid_invoices'), paid_invoices_path, class: "btn btn-ghost" %>
+    </div>
   </div>
 
-  <% if @pending_invoices.any? %>
-    <div class="invoice-grid">
-      <% @pending_invoices.each do |invoice| %>
-        <%= render partial: 'home/components/invoice_card', locals: { invoice: } %>
-      <% end %>
-    </div>
-  <% else %>
-    <p class="home-empty"><%= t('.no_pending') %></p>
-  <% end %>
+  <%= render partial: 'home/components/invoice_list', locals: { invoices: @open_invoices } %>
 
   <div class="modal-overlay"
        data-home--modal-target="overlay"

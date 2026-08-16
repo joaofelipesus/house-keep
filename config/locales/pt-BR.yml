@@ -85,12 +85,19 @@ pt-BR:
     index:
       title: "Contas pendentes do mês"
       due_date: "Vence em %{date}"
-      no_pending: "Nenhuma conta pendente este mês."
       update_invoice: "Atualizar fatura"
+      paid_invoices: "Contas pagas do mês"
+    components:
+      invoice_list:
+        no_pending: "Nenhuma conta pendente este mês."
 
   invoices:
     form:
       payment_hint: "Ao salvar, a fatura será marcada como paga."
+    paid:
+      title: "Contas pagas do mês"
+      back: "Voltar"
+      no_invoices: "Nenhuma conta paga este mês."
 
   current_incomes:
     index:

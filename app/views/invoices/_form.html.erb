@@ -3,11 +3,6 @@
   <%= render partial: 'layouts/components/forms/errors', locals: { record: invoice } %>
 
   <div class="form-field">
-    <%= form.label :payment_status %>
-    <%= form.select :payment_status, Invoice.payment_statuses.keys.map { |s| [t("activerecord.attributes.invoice.payment_statuses.#{s}"), s] } %>
-  </div>
-
-  <div class="form-field">
     <%= form.label :payment_date %>
     <%= form.date_field :payment_date, value: Date.current %>
   </div>
@@ -16,6 +11,8 @@
     <%= form.label :payment_amount %>
     <%= form.text_field :payment_amount %>
   </div>
+
+  <p class="form-hint"><%= t('.payment_hint') %></p>
 
   <div class="form-submit">
     <%= form.submit %>

@@ -1,0 +1,12 @@
+<%# locals: (invoices:) %>
+<div id="open-invoices">
+  <% if invoices.any? %>
+    <div class="invoice-grid">
+      <% invoices.each do |invoice| %>
+        <%= render partial: 'home/components/invoice_card', locals: { invoice: } %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="home-empty"><%= t('.no_pending') %></p>
+  <% end %>
+</div>

@@ -1,0 +1,3 @@
+<%= turbo_stream.replace 'open-invoices',
+                         partial: 'home/components/invoice_list',
+                         locals: { invoices: @open_invoices } %>

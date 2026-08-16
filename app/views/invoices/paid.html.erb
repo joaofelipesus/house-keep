@@ -1,0 +1,50 @@
+<% content_for :title, t('.title') %>
+
+<div class="page-header">
+  <h1 class="page-title"><%= t('.title') %></h1>
+  <%= link_to t('.back'), root_path, class: "btn btn-ghost" %>
+</div>
+
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= Bill.human_attribute_name(:title) %></th>
+        <th><%= Invoice.human_attribute_name(:due_date) %></th>
+        <th><%= Invoice.human_attribute_name(:payment_date) %></th>
+        <th><%= Invoice.human_attribute_name(:payment_amount) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @invoices.any? %>
+        <% @invoices.each do |invoice| %>
+          <tr>
+            <td>
+              <div class="table-name">
+                <div class="table-logo">
+                  <% if invoice.bill.company_logo.attached? %>
+                    <%= image_tag invoice.bill.company_logo, class: "table-logo-img" %>
+                  <% else %>
+                    <span class="table-logo-placeholder"><%= invoice.bill.title.first.upcase %></span>
+                  <% end %>
+                </div>
+                <div class="table-info">
+                  <span class="table-title"><%= invoice.bill.title %></span>
+                </div>
+              </div>
+            </td>
+            <td class="table-muted"><%= l(invoice.due_date, format: :short) %></td>
+            <td class="table-muted"><%= l(invoice.payment_date, format: :short) %></td>
+            <td class="table-value">
+              <%= number_to_currency(invoice.payment_amount, unit: "R$", separator: ",", delimiter: ".") %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="4" class="table-empty"><%= t('.no_invoices') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
