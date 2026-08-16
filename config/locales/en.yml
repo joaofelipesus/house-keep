@@ -60,6 +60,7 @@ en:
         current_incomes: "Incomes"
         income_label: "Current income"
         no_income: "Not set"
+        sign_out: "Sign out"
 
   helpers:
     submit:
@@ -80,6 +81,17 @@ en:
     components:
       invoice_list:
         no_pending: "No pending bills this month."
+
+  sessions:
+    new:
+      title: "Sign in"
+      subtitle: "Sign in to your account to continue."
+      email_placeholder: "Enter your email address"
+      password_placeholder: "Enter your password"
+      sign_in: "Sign in"
+    create:
+      invalid_credentials: "Try another email address or password."
+      rate_limited: "Try again later."
 
   invoices:
     form:

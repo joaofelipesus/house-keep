@@ -84,6 +84,55 @@
   border: 1px solid #6ee7b7;
 }
 
+.flash-alert {
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border: 1px solid var(--color-danger-border);
+}
+
+/* ── Auth (sign in) ───────────────────────────────────── */
+
+.auth {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2xl) 0;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: calc(var(--base) * 96);
+  padding: var(--space-2xl);
+  background: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius);
+}
+
+.auth-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.auth-subtitle {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xl);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* The card already provides the padding the shared .form class would add. */
+.auth-form {
+  padding: 0;
+}
+
+.auth-submit {
+  margin-top: var(--space-sm);
+}
+
+.auth-submit input {
+  width: 100%;
+}
+
 /* ── Detail card ──────────────────────────────────────── */
 
 .detail-card {
@@ -223,6 +272,16 @@
 }
 
 .navbar-links a:hover { color: var(--color-primary); }
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navbar-signout {
+  display: flex;
+}
 
 .navbar-income {
   display: flex;
