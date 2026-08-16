@@ -69,8 +69,3 @@ Tip: add an alias to avoid repeating the `-f` flags:
 ```bash
 alias dc-prod='docker compose -f docker-compose.yml -f docker-compose.prod.yml'
 ```
-
-# TODO
-- finish bill crud
-- add image with the bill logo
-- add crud on home
