@@ -28,10 +28,9 @@ export default class extends Controller {
     if (event.target === this.overlayTarget) this.close()
   }
 
+  // The update response is a turbo stream that re-renders the invoice list, so closing
+  // the modal is all that is left to do here.
   #handleSubmitEnd = ({ detail: { success } }) => {
-    if (success) {
-      this.close()
-      Turbo.visit(window.location.href)
-    }
+    if (success) this.close()
   }
 }

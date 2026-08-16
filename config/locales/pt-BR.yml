@@ -41,6 +41,9 @@ pt-BR:
         statuses:
           active: "Ativo"
           outdated: "Desatualizado"
+      user:
+        email_address: "E-mail"
+        password: "Senha"
     errors:
       models:
         bill:
@@ -70,6 +73,7 @@ pt-BR:
         current_incomes: "Rendas"
         income_label: "Renda atual"
         no_income: "Não definida"
+        sign_out: "Sair"
 
   helpers:
     submit:
@@ -85,12 +89,30 @@ pt-BR:
     index:
       title: "Contas pendentes do mês"
       due_date: "Vence em %{date}"
-      no_pending: "Nenhuma conta pendente este mês."
       update_invoice: "Atualizar fatura"
+      paid_invoices: "Contas pagas do mês"
+    components:
+      invoice_list:
+        no_pending: "Nenhuma conta pendente este mês."
+
+  sessions:
+    new:
+      title: "Entrar"
+      subtitle: "Acesse sua conta para continuar."
+      email_placeholder: "Digite seu e-mail"
+      password_placeholder: "Digite sua senha"
+      sign_in: "Entrar"
+    create:
+      invalid_credentials: "E-mail ou senha inválidos."
+      rate_limited: "Muitas tentativas. Tente novamente mais tarde."
 
   invoices:
     form:
       payment_hint: "Ao salvar, a fatura será marcada como paga."
+    paid:
+      title: "Contas pagas do mês"
+      back: "Voltar"
+      no_invoices: "Nenhuma conta paga este mês."
 
   current_incomes:
     index:

@@ -32,7 +32,7 @@ class BillsController < ApplicationController
 
   # PATCH/PUT /bills/1 or /bills/1.json
   def update
-    if @bill.update(bill_params)
+    if @bill.update_bill_with_invoices(bill_params)
       redirect_to @bill, notice: 'Bill was successfully updated.', status: :see_other
     else
       render :edit, status: :unprocessable_content

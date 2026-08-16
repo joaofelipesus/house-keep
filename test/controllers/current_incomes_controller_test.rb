@@ -4,6 +4,7 @@ require 'test_helper'
 
 class CurrentIncomesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in_as users(:one)
     @current_income = current_incomes(:active_income)
   end
 

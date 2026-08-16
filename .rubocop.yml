@@ -44,6 +44,12 @@ Rails/SkipsModelValidations:
 Naming/VariableNumber:
   Enabled: false
 
+# Persistence methods return true/false like ActiveRecord's own save/update.
+Naming/PredicateMethod:
+  AllowedMethods:
+    - update_bill_with_invoices
+    - confirm_payment
+
 Metrics/ClassLength:
   Exclude:
     - "test/**/*"

@@ -4,6 +4,7 @@ require 'test_helper'
 
 class BillsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in_as users(:one)
     @bill = bills(:internet)
   end
 
@@ -64,6 +65,34 @@ class BillsControllerTest < ActionDispatch::IntegrationTest
     )
 
     assert_redirected_to bill_url(@bill)
+  end
+
+  test 'should sync the open invoice when updating the recurrent due day' do
+    travel_to Date.new(2026, 5, 1) do
+      bill = bills(:streaming)
+      invoice = invoices(:pending_invoice)
+
+      assert_no_difference('Invoice.count') do
+        patch(
+          bill_url(bill),
+          params: {
+            bill: {
+              recurrent_due_day: 25,
+              recurring: '1',
+              title: bill.title,
+              value: 59.90
+            }
+          }
+        )
+      end
+
+      assert_redirected_to bill_url(bill)
+
+      invoice.reload
+
+      assert_equal Date.new(2026, 5, 25), invoice.due_date
+      assert_equal 59.90, invoice.payment_amount.to_f
+    end
   end
 
   test 'should destroy bill' do

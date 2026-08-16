@@ -60,6 +60,7 @@ en:
         current_incomes: "Incomes"
         income_label: "Current income"
         no_income: "Not set"
+        sign_out: "Sign out"
 
   helpers:
     submit:
@@ -75,8 +76,30 @@ en:
     index:
       title: "Pending bills this month"
       due_date: "Due %{date}"
-      no_pending: "No pending bills this month."
       update_invoice: "Update invoice"
+      paid_invoices: "Bills paid this month"
+    components:
+      invoice_list:
+        no_pending: "No pending bills this month."
+
+  sessions:
+    new:
+      title: "Sign in"
+      subtitle: "Sign in to your account to continue."
+      email_placeholder: "Enter your email address"
+      password_placeholder: "Enter your password"
+      sign_in: "Sign in"
+    create:
+      invalid_credentials: "Try another email address or password."
+      rate_limited: "Try again later."
+
+  invoices:
+    form:
+      payment_hint: "Saving will mark this invoice as paid."
+    paid:
+      title: "Bills paid this month"
+      back: "Back"
+      no_invoices: "No bills paid this month."
 
   current_incomes:
     index:

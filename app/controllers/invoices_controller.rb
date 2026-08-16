@@ -14,11 +14,20 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit; end
 
+  # GET /invoices/paid
+  def paid
+    @invoices = Invoice.paid_this_month.includes(:bill)
+  end
+
   # PATCH/PUT /invoices/1 or /invoices/1.json
+  # The home modal is a payment confirmation, so saving it always settles the invoice. Without
+  # this the status stayed as it was and the invoice kept showing up on the home page.
   def update
-    if @invoice.update(invoice_params)
+    if @invoice.confirm_payment(invoice_params)
+      @open_invoices = Invoice.open_this_month.includes(:bill)
+
       respond_to do |format|
-        format.turbo_stream { head :ok }
+        format.turbo_stream
         format.html { redirect_to root_path, status: :see_other }
       end
     else

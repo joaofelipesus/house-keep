@@ -1,24 +1,36 @@
 <nav class="navbar">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M3 13L14 3L25 13V25H18V18H10V25H3V13Z" fill="#4f46e5" stroke="#4f46e5" stroke-width="1.5" stroke-linejoin="round"/>
-      <rect x="11" y="18" width="6" height="7" fill="white"/>
-    </svg>
-    <span>HouseKeep</span>
+  <% if authenticated? %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= render partial: 'layouts/components/brand' %>
+    <% end %>
+
+    <div class="navbar-links">
+      <%= link_to Bill.model_name.human(count: 2), bills_path %>
+      <%= link_to t('.current_incomes'), current_incomes_path %>
+    </div>
+
+    <% income = CurrentIncome.active.last %>
+    <div class="navbar-right">
+      <div class="navbar-income">
+        <span class="navbar-income-label"><%= t('.income_label') %></span>
+        <span class="navbar-income-value">
+          <% if income %>
+            <%= number_to_currency(income.value, unit: "R$", separator: ",", delimiter: ".") %>
+          <% else %>
+            <%= t('.no_income') %>
+          <% end %>
+        </span>
+      </div>
+
+      <%= button_to t('.sign_out'), session_path,
+                    method: :delete,
+                    class: "btn btn-ghost btn-sm",
+                    form_class: "navbar-signout" %>
+    </div>
+  <% else %>
+    <%# Signed out: branding only, no navigation and no financial data. %>
+    <div class="navbar-brand">
+      <%= render partial: 'layouts/components/brand' %>
+    </div>
   <% end %>
-  <div class="navbar-links">
-    <%= link_to Bill.model_name.human(count: 2), bills_path %>
-    <%= link_to t('.current_incomes'), current_incomes_path %>
-  </div>
-  <% income = CurrentIncome.active.last %>
-  <div class="navbar-income">
-    <span class="navbar-income-label"><%= t('.income_label') %></span>
-    <span class="navbar-income-value">
-      <% if income %>
-        <%= number_to_currency(income.value, unit: "R$", separator: ",", delimiter: ".") %>
-      <% else %>
-        <%= t('.no_income') %>
-      <% end %>
-    </span>
-  </div>
 </nav>
