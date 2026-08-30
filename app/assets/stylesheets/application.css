@@ -33,6 +33,11 @@
   --color-danger-border: #fca5a5;
   --color-danger-bg: #fef2f2;
 
+  /* money in / money out (statement) */
+  --color-positive: #047857;
+  --color-positive-bg: #ecfdf5;
+  --color-negative: #b45309;
+
   /* disabled / inactive */
   --color-inactive: #d1d5db;
 

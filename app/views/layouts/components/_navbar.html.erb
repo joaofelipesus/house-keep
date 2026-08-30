@@ -5,7 +5,10 @@
     <% end %>
 
     <div class="navbar-links">
+      <%= link_to t('.statement'), statement_path %>
       <%= link_to Bill.model_name.human(count: 2), bills_path %>
+      <%= link_to Income.model_name.human(count: 2), incomes_path %>
+      <%= link_to Expense.model_name.human(count: 2), expenses_path %>
       <%= link_to t('.current_incomes'), current_incomes_path %>
     </div>
 

@@ -15,6 +15,9 @@ class Invoice < ApplicationRecord
   scope :unpaid, -> { where(payment_status: %i[pending delayed]) }
   scope :due_until, ->(date) { where(due_date: ..date) }
 
+  # Everything charged inside a period, paid or not - the monthly statement groups by due date.
+  scope :due_in, ->(period) { where(due_date: period) }
+
   # What the home page owes the user: still unpaid and already due (or due before the month ends),
   # which keeps invoices carried over from previous months visible until they are settled.
   scope :open_this_month, -> { unpaid.due_until(Date.current.end_of_month).order(:due_date) }

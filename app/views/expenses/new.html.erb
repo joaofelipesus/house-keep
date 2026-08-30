@@ -1,0 +1,16 @@
+<% if modal_request? %>
+  <turbo-frame id="modal-frame">
+    <%= render "form", expense: @expense, url: expenses_path(modal: true) %>
+  </turbo-frame>
+<% else %>
+  <% content_for :title, t('.title') %>
+
+  <div class="page-header">
+    <h1 class="page-title"><%= t('.title') %></h1>
+    <div class="page-actions">
+      <%= link_to t('.back'), expenses_path, class: "btn btn-ghost btn-sm" %>
+    </div>
+  </div>
+
+  <%= render "form", expense: @expense, url: expenses_path %>
+<% end %>

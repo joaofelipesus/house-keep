@@ -1,10 +1,20 @@
 en:
+  date:
+    formats:
+      month_year: "%B %Y"
+
   activerecord:
     models:
       bill: "Bill"
       current_income:
         one: "Income"
         other: "Incomes"
+      income:
+        one: "Income entry"
+        other: "Income entries"
+      expense:
+        one: "Expense"
+        other: "Expenses"
     attributes:
       bill:
         title: "Title"
@@ -20,6 +30,7 @@ en:
         company_logo: "Company logo"
         recurrent_due_day: "Recurrent due day"
       invoice:
+        due_date: "Due date"
         payment_status: "Status"
         payment_date: "Payment date"
         payment_amount: "Amount paid"
@@ -33,6 +44,42 @@ en:
         statuses:
           active: "Active"
           outdated: "Outdated"
+      income:
+        title: "Description"
+        value: "Value"
+        received_on: "Received on"
+        category: "Category"
+        description: "Notes"
+        categories:
+          salary: "Salary"
+          freelance: "Freelance"
+          investment: "Investments"
+          refund: "Refund"
+          gift: "Gift"
+          other: "Other"
+      expense:
+        title: "Description"
+        value: "Value"
+        spent_on: "Spent on"
+        category: "Category"
+        payment_method: "Payment method"
+        description: "Notes"
+        categories:
+          groceries: "Groceries"
+          food: "Food"
+          taxes: "Taxes"
+          transport: "Transport"
+          health: "Health"
+          home: "Home"
+          leisure: "Leisure"
+          education: "Education"
+          other: "Other"
+        payment_methods:
+          credit_card: "Credit card"
+          debit_card: "Debit card"
+          pix: "Pix"
+          bank_slip: "Bank slip"
+          cash: "Cash"
     errors:
       models:
         bill:
@@ -48,6 +95,22 @@ en:
           attributes:
             value:
               blank: "can't be blank"
+        income:
+          attributes:
+            title:
+              blank: "can't be blank"
+            value:
+              blank: "can't be blank"
+            received_on:
+              blank: "can't be blank"
+        expense:
+          attributes:
+            title:
+              blank: "can't be blank"
+            value:
+              blank: "can't be blank"
+            spent_on:
+              blank: "can't be blank"
 
   layouts:
     components:
@@ -57,6 +120,7 @@ en:
             one: "1 error prohibited this %{model} from being saved:"
             other: "%{count} errors prohibited this %{model} from being saved:"
       navbar:
+        statement: "Statement"
         current_incomes: "Incomes"
         income_label: "Current income"
         no_income: "Not set"
@@ -71,6 +135,12 @@ en:
         update: "Save changes"
       current_income:
         create: "Save income"
+      income:
+        create: "Create income"
+        update: "Save changes"
+      expense:
+        create: "Create expense"
+        update: "Save changes"
 
   home:
     index:
@@ -78,9 +148,14 @@ en:
       due_date: "Due %{date}"
       update_invoice: "Update invoice"
       paid_invoices: "Bills paid this month"
+      new_income: "New income"
+      new_expense: "New expense"
     components:
       invoice_list:
         no_pending: "No pending bills this month."
+      statement:
+        title: "%{month} statement"
+        full_statement: "Full statement →"
 
   sessions:
     new:
@@ -100,6 +175,73 @@ en:
       title: "Bills paid this month"
       back: "Back"
       no_invoices: "No bills paid this month."
+
+  statements:
+    show:
+      title: "Monthly statement"
+      previous_month: "← Previous month"
+      next_month: "Next month →"
+      new_income: "New income"
+      new_expense: "New expense"
+    components:
+      summary:
+        incomes_total: "Money in"
+        outcomes_total: "Money out"
+        balance: "Balance"
+      incomes:
+        title: "Money in"
+        edit: "Edit"
+        empty: "No income recorded this month."
+      invoices:
+        title: "Bills this month"
+        edit: "Open"
+        empty: "No bills due this month."
+      expenses:
+        title: "One-off expenses"
+        edit: "Edit"
+        empty: "No one-off expenses this month."
+
+  incomes:
+    index:
+      title: "Income entries"
+      statement: "Statement"
+      new_income: "New income"
+      edit: "Edit"
+      no_incomes: "No income recorded."
+    new:
+      title: "New income"
+      back: "Back to income"
+    edit:
+      title: "Editing income"
+      back: "Back to income"
+      destroy_income: "Delete"
+    create:
+      created: "Income was successfully created."
+    update:
+      updated: "Income was successfully updated."
+    destroy:
+      destroyed: "Income was successfully destroyed."
+
+  expenses:
+    index:
+      title: "Expenses"
+      statement: "Statement"
+      new_expense: "New expense"
+      edit: "Edit"
+      no_expenses: "No expenses recorded."
+    new:
+      title: "New expense"
+      back: "Back to expenses"
+    edit:
+      title: "Editing expense"
+      back: "Back to expenses"
+      destroy_expense: "Delete"
+    create:
+      created: "Expense was successfully created."
+    update:
+      updated: "Expense was successfully updated."
+    destroy:
+      destroyed: "Expense was successfully destroyed."
 
   current_incomes:
     index:

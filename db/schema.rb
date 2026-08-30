@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_16_155852) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_30_120002) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -58,6 +58,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_16_155852) do
     t.string "status", default: "active", null: false
     t.datetime "updated_at", null: false
     t.decimal "value", precision: 10, scale: 2, null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "category", default: "other", null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "payment_method"
+    t.date "spent_on", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "value", precision: 10, scale: 2, null: false
+    t.index ["spent_on"], name: "index_expenses_on_spent_on"
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.string "category", default: "other", null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.date "received_on", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "value", precision: 10, scale: 2, null: false
+    t.index ["received_on"], name: "index_incomes_on_received_on"
   end
 
   create_table "invoices", force: :cascade do |t|
