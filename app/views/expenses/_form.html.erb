@@ -1,0 +1,50 @@
+<%# locals: (expense:, url: nil) %>
+
+<%= form_with(model: expense, url: url, class: "form") do |form| %>
+  <%= render(partial: 'layouts/components/forms/errors', locals: { record: expense }) %>
+
+  <div class="form-field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :spent_on %>
+    <%= form.date_field :spent_on %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :category %>
+    <%=
+      form.select(
+        :category,
+        Expense.categories.keys.map { |key| [t("activerecord.attributes.expense.categories.#{key}"), key] }
+      )
+    %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :payment_method %>
+    <%=
+      form.select(
+        :payment_method,
+        Expense.payment_methods.keys.map { |key| [t("activerecord.attributes.expense.payment_methods.#{key}"), key] },
+        { include_blank: true }
+      )
+    %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :description %>
+    <%= form.textarea :description %>
+  </div>
+
+  <div class="form-submit">
+    <%= form.submit %>
+  </div>
+<% end %>

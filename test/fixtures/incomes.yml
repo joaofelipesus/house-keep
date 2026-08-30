@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+may_salary:
+  title: Salário
+  value: 5000.00
+  received_on: 2026-05-05
+  category: salary
+  description: Salário mensal
+
+may_freelance:
+  title: Projeto freelance
+  value: 1200.00
+  received_on: 2026-05-18
+  category: freelance
+  description: null
+
+april_salary:
+  title: Salário
+  value: 4800.00
+  received_on: 2026-04-05
+  category: salary
+  description: null

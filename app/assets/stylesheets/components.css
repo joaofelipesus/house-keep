@@ -453,3 +453,119 @@
 }
 
 .modal-body { padding: 0; }
+
+/* ── Statement ────────────────────────────────────────── */
+
+.statement-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius);
+}
+
+.statement-nav-month {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.statement-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.statement-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.statement-summary-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.statement-summary-value {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.statement-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.statement-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.statement-section-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.statement-section-total {
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.statement-amount-positive { color: var(--color-positive); }
+
+.statement-amount-negative { color: var(--color-negative); }
+
+.statement-status {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  padding: 2px var(--space-sm);
+  white-space: nowrap;
+}
+
+.statement-status-paid {
+  color: var(--color-positive);
+  background: var(--color-positive-bg);
+}
+
+.statement-status-pending {
+  color: var(--color-text-muted);
+  background: var(--color-border-subtle);
+}
+
+.statement-status-delayed {
+  color: var(--color-danger-text);
+  background: var(--color-danger-bg);
+}
+
+/* The home page statement sits below the invoice cards, so it needs a rule to read as a
+   separate block rather than a continuation of the list. */
+.home-statement {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.home-statement .statement-summary {
+  margin-bottom: 0;
+}

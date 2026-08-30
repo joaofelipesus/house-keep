@@ -1,0 +1,39 @@
+<%# locals: (income:, url: nil) %>
+
+<%= form_with(model: income, url: url, class: "form") do |form| %>
+  <%= render(partial: 'layouts/components/forms/errors', locals: { record: income }) %>
+
+  <div class="form-field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :received_on %>
+    <%= form.date_field :received_on %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :category %>
+    <%=
+      form.select(
+        :category,
+        Income.categories.keys.map { |key| [t("activerecord.attributes.income.categories.#{key}"), key] }
+      )
+    %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :description %>
+    <%= form.textarea :description %>
+  </div>
+
+  <div class="form-submit">
+    <%= form.submit %>
+  </div>
+<% end %>

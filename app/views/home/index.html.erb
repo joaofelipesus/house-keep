@@ -2,22 +2,40 @@
   <div class="page-header">
     <h1 class="page-title"><%= t('.title') %></h1>
     <div class="page-actions">
-      <%= link_to t('.paid_invoices'), paid_invoices_path, class: "btn btn-ghost" %>
+      <%= link_to t('.new_income'), new_income_path,
+                  class: "btn btn-ghost btn-sm",
+                  data: {
+                    action: "click->home--modal#open",
+                    'home--modal-url-param' => new_income_path(modal: true),
+                    'home--modal-title-param' => t('.new_income')
+                  } %>
+      <%= link_to t('.new_expense'), new_expense_path,
+                  class: "btn btn-ghost btn-sm",
+                  data: {
+                    action: "click->home--modal#open",
+                    'home--modal-url-param' => new_expense_path(modal: true),
+                    'home--modal-title-param' => t('.new_expense')
+                  } %>
+      <%= link_to t('.paid_invoices'), paid_invoices_path, class: "btn btn-ghost btn-sm" %>
     </div>
   </div>
 
+  <%= render partial: 'layouts/components/flash', locals: { notice: notice } %>
+
   <%= render partial: 'home/components/invoice_list', locals: { invoices: @open_invoices } %>
+
+  <%= render partial: 'home/components/statement', locals: { statement: @statement } %>
 
   <div class="modal-overlay"
        data-home--modal-target="overlay"
        data-action="click->home--modal#closeOnBackdrop">
     <div class="modal-box">
       <div class="modal-header">
-        <span class="modal-title"><%= t('.update_invoice') %></span>
+        <span class="modal-title" data-home--modal-target="title"></span>
         <button class="modal-close" data-action="click->home--modal#close">✕</button>
       </div>
       <div class="modal-body">
-        <turbo-frame id="invoice-modal-frame" data-home--modal-target="frame"></turbo-frame>
+        <turbo-frame id="modal-frame" data-home--modal-target="frame"></turbo-frame>
       </div>
     </div>
   </div>

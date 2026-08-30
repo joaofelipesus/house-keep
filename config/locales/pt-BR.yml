@@ -4,6 +4,51 @@ pt-BR:
       default: "%d/%m/%Y"
       short: "%d/%m"
       long: "%d de %B de %Y"
+      month_year: "%B de %Y"
+    month_names:
+      - ~
+      - "janeiro"
+      - "fevereiro"
+      - "março"
+      - "abril"
+      - "maio"
+      - "junho"
+      - "julho"
+      - "agosto"
+      - "setembro"
+      - "outubro"
+      - "novembro"
+      - "dezembro"
+    abbr_month_names:
+      - ~
+      - "jan"
+      - "fev"
+      - "mar"
+      - "abr"
+      - "mai"
+      - "jun"
+      - "jul"
+      - "ago"
+      - "set"
+      - "out"
+      - "nov"
+      - "dez"
+    day_names:
+      - "domingo"
+      - "segunda-feira"
+      - "terça-feira"
+      - "quarta-feira"
+      - "quinta-feira"
+      - "sexta-feira"
+      - "sábado"
+    abbr_day_names:
+      - "dom"
+      - "seg"
+      - "ter"
+      - "qua"
+      - "qui"
+      - "sex"
+      - "sáb"
 
   activerecord:
     models:
@@ -13,6 +58,12 @@ pt-BR:
       current_income:
         one: "Renda"
         other: "Rendas"
+      income:
+        one: "Entrada"
+        other: "Entradas"
+      expense:
+        one: "Gasto"
+        other: "Gastos"
     attributes:
       bill:
         title: "Título"
@@ -28,6 +79,7 @@ pt-BR:
         company_logo: "Logo da empresa"
         recurrent_due_day: "Dia de vencimento recorrente"
       invoice:
+        due_date: "Vencimento"
         payment_status: "Status"
         payment_date: "Data de pagamento"
         payment_amount: "Valor pago"
@@ -41,6 +93,42 @@ pt-BR:
         statuses:
           active: "Ativo"
           outdated: "Desatualizado"
+      income:
+        title: "Descrição"
+        value: "Valor"
+        received_on: "Data de recebimento"
+        category: "Categoria"
+        description: "Observações"
+        categories:
+          salary: "Salário"
+          freelance: "Freelance"
+          investment: "Investimentos"
+          refund: "Reembolso"
+          gift: "Presente"
+          other: "Outros"
+      expense:
+        title: "Descrição"
+        value: "Valor"
+        spent_on: "Data do gasto"
+        category: "Categoria"
+        payment_method: "Forma de pagamento"
+        description: "Observações"
+        categories:
+          groceries: "Mercado"
+          food: "Alimentação"
+          taxes: "Impostos"
+          transport: "Transporte"
+          health: "Saúde"
+          home: "Casa"
+          leisure: "Lazer"
+          education: "Educação"
+          other: "Outros"
+        payment_methods:
+          credit_card: "Cartão de crédito"
+          debit_card: "Cartão de débito"
+          pix: "Pix"
+          bank_slip: "Boleto bancário"
+          cash: "Dinheiro"
       user:
         email_address: "E-mail"
         password: "Senha"
@@ -61,6 +149,22 @@ pt-BR:
           attributes:
             value:
               blank: "não pode ficar em branco"
+        income:
+          attributes:
+            title:
+              blank: "não pode ficar em branco"
+            value:
+              blank: "não pode ficar em branco"
+            received_on:
+              blank: "não pode ficar em branco"
+        expense:
+          attributes:
+            title:
+              blank: "não pode ficar em branco"
+            value:
+              blank: "não pode ficar em branco"
+            spent_on:
+              blank: "não pode ficar em branco"
 
   layouts:
     components:
@@ -70,6 +174,7 @@ pt-BR:
             one: "1 erro impediu este %{model} de ser salvo:"
             other: "%{count} erros impediram este %{model} de ser salvo:"
       navbar:
+        statement: "Extrato"
         current_incomes: "Rendas"
         income_label: "Renda atual"
         no_income: "Não definida"
@@ -84,6 +189,12 @@ pt-BR:
         update: "Confirmar pagamento"
       current_income:
         create: "Salvar renda"
+      income:
+        create: "Criar entrada"
+        update: "Salvar alterações"
+      expense:
+        create: "Criar gasto"
+        update: "Salvar alterações"
 
   home:
     index:
@@ -91,9 +202,14 @@ pt-BR:
       due_date: "Vence em %{date}"
       update_invoice: "Atualizar fatura"
       paid_invoices: "Contas pagas do mês"
+      new_income: "Nova entrada"
+      new_expense: "Novo gasto"
     components:
       invoice_list:
         no_pending: "Nenhuma conta pendente este mês."
+      statement:
+        title: "Extrato de %{month}"
+        full_statement: "Ver extrato →"
 
   sessions:
     new:
@@ -113,6 +229,73 @@ pt-BR:
       title: "Contas pagas do mês"
       back: "Voltar"
       no_invoices: "Nenhuma conta paga este mês."
+
+  statements:
+    show:
+      title: "Extrato do mês"
+      previous_month: "← Mês anterior"
+      next_month: "Próximo mês →"
+      new_income: "Nova entrada"
+      new_expense: "Novo gasto"
+    components:
+      summary:
+        incomes_total: "Entradas"
+        outcomes_total: "Saídas"
+        balance: "Saldo"
+      incomes:
+        title: "Entradas"
+        edit: "Editar"
+        empty: "Nenhuma entrada neste mês."
+      invoices:
+        title: "Contas do mês"
+        edit: "Abrir"
+        empty: "Nenhuma conta vencendo neste mês."
+      expenses:
+        title: "Gastos avulsos"
+        edit: "Editar"
+        empty: "Nenhum gasto avulso neste mês."
+
+  incomes:
+    index:
+      title: "Entradas"
+      statement: "Extrato"
+      new_income: "Nova entrada"
+      edit: "Editar"
+      no_incomes: "Nenhuma entrada cadastrada."
+    new:
+      title: "Nova entrada"
+      back: "Voltar para entradas"
+    edit:
+      title: "Editando entrada"
+      back: "Voltar para entradas"
+      destroy_income: "Excluir"
+    create:
+      created: "Entrada criada com sucesso."
+    update:
+      updated: "Entrada atualizada com sucesso."
+    destroy:
+      destroyed: "Entrada excluída com sucesso."
+
+  expenses:
+    index:
+      title: "Gastos"
+      statement: "Extrato"
+      new_expense: "Novo gasto"
+      edit: "Editar"
+      no_expenses: "Nenhum gasto cadastrado."
+    new:
+      title: "Novo gasto"
+      back: "Voltar para gastos"
+    edit:
+      title: "Editando gasto"
+      back: "Voltar para gastos"
+      destroy_expense: "Excluir"
+    create:
+      created: "Gasto criado com sucesso."
+    update:
+      updated: "Gasto atualizado com sucesso."
+    destroy:
+      destroyed: "Gasto excluído com sucesso."
 
   current_incomes:
     index:

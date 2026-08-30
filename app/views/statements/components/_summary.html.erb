@@ -1,0 +1,20 @@
+<%# locals: (statement:) %>
+
+<div class="statement-summary">
+  <div class="statement-summary-item">
+    <span class="statement-summary-label"><%= t('.incomes_total') %></span>
+    <span class="statement-summary-value statement-amount-positive"><%= money(statement.incomes_total) %></span>
+  </div>
+
+  <div class="statement-summary-item">
+    <span class="statement-summary-label"><%= t('.outcomes_total') %></span>
+    <span class="statement-summary-value statement-amount-negative"><%= money(statement.outcomes_total) %></span>
+  </div>
+
+  <div class="statement-summary-item">
+    <span class="statement-summary-label"><%= t('.balance') %></span>
+    <span class="statement-summary-value <%= statement.balance.negative? ? 'statement-amount-negative' : 'statement-amount-positive' %>">
+      <%= money(statement.balance) %>
+    </span>
+  </div>
+</div>

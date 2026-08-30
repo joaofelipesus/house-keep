@@ -12,6 +12,29 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'offers modal shortcuts to create an income and an expense' do
+    get root_path
+
+    assert_select '[data-home--modal-url-param=?]', new_income_path(modal: true)
+    assert_select '[data-home--modal-url-param=?]', new_expense_path(modal: true)
+    assert_select 'turbo-frame#modal-frame'
+  end
+
+  test 'shows the current month statement totals at the bottom' do
+    travel_to Date.new(2026, 5, 25) do
+      get root_path
+
+      assert_response :success
+      # 6.200,00 in; 199,80 of invoices + 590,00 of expenses out; 5.410,20 left.
+      assert_select '#home-statement' do
+        assert_select '.statement-summary-value', text: 'R$ 6.200,00'
+        assert_select '.statement-summary-value', text: 'R$ 789,80'
+        assert_select '.statement-summary-value', text: /R\$ 5\.410,20/
+        assert_select 'a[href=?]', statement_path
+      end
+    end
+  end
+
   test 'lists unpaid invoices from past months alongside the current ones' do
     travel_to Date.new(2026, 5, 25) do
       get root_path

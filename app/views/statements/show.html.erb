@@ -1,0 +1,31 @@
+<% content_for :title, t('.title') %>
+
+<div class="page-header">
+  <h1 class="page-title"><%= t('.title') %></h1>
+  <div class="page-actions">
+    <%= link_to t('.new_income'), new_income_path, class: "btn btn-ghost btn-sm" %>
+    <%= link_to t('.new_expense'), new_expense_path, class: "btn btn-primary btn-sm" %>
+  </div>
+</div>
+
+<% if notice.present? %>
+  <p class="flash flash-notice"><%= notice %></p>
+<% end %>
+
+<div class="statement-nav">
+  <%= link_to t('.previous_month'),
+              statement_path(month: @statement.prev_month.strftime('%Y-%m')),
+              class: "btn btn-ghost btn-sm" %>
+
+  <span class="statement-nav-month"><%= month_title(@statement.month) %></span>
+
+  <%= link_to t('.next_month'),
+              statement_path(month: @statement.next_month.strftime('%Y-%m')),
+              class: "btn btn-ghost btn-sm" %>
+</div>
+
+<%= render partial: 'statements/components/summary', locals: { statement: @statement } %>
+
+<%= render partial: 'statements/components/incomes', locals: { incomes: @statement.incomes, total: @statement.incomes_total } %>
+<%= render partial: 'statements/components/invoices', locals: { invoices: @statement.invoices, total: @statement.invoices_total } %>
+<%= render partial: 'statements/components/expenses', locals: { expenses: @statement.expenses, total: @statement.expenses_total } %>

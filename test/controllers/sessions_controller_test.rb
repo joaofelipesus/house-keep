@@ -23,7 +23,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     get root_path
 
-    assert_select '.navbar-links a', count: 2
+    assert_select '.navbar-links a', count: 5
+    assert_select '.navbar-links a[href=?]', statement_path
+    assert_select '.navbar-links a[href=?]', incomes_path
+    assert_select '.navbar-links a[href=?]', expenses_path
     assert_select '.navbar-income-value'
     assert_select ".navbar-signout[action=?]", session_path do
       assert_select "input[name=_method][value=delete]", count: 1

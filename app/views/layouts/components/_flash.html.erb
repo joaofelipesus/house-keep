@@ -1,0 +1,8 @@
+<%# locals: (notice: nil) %>
+
+<%# Wrapped in a stable id so a turbo stream can drop a message in without a full page load. %>
+<div id="flash">
+  <% if notice.present? %>
+    <p class="flash flash-notice"><%= notice %></p>
+  <% end %>
+</div>

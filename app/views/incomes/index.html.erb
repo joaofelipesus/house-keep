@@ -1,0 +1,55 @@
+<% content_for :title, t('.title') %>
+
+<div class="page-header">
+  <h1 class="page-title"><%= t('.title') %></h1>
+  <div class="page-actions">
+    <%= link_to t('.statement'), statement_path, class: "btn btn-ghost btn-sm" %>
+    <%= link_to t('.new_income'), new_income_path, class: "btn btn-primary btn-sm" %>
+  </div>
+</div>
+
+<% if notice.present? %>
+  <p class="flash flash-notice"><%= notice %></p>
+<% end %>
+
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= Income.human_attribute_name(:title) %></th>
+        <th><%= Income.human_attribute_name(:category) %></th>
+        <th><%= Income.human_attribute_name(:received_on) %></th>
+        <th><%= Income.human_attribute_name(:value) %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @incomes.any? %>
+        <% @incomes.each do |income| %>
+          <tr>
+            <td>
+              <div class="table-info">
+                <span class="table-title"><%= income.title %></span>
+                <% if income.description.present? %>
+                  <span class="table-description"><%= income.description %></span>
+                <% end %>
+              </div>
+            </td>
+            <td class="table-muted">
+              <%= t("activerecord.attributes.income.categories.#{income.category}") %>
+            </td>
+            <td class="table-muted"><%= l(income.received_on, format: :short) %></td>
+            <td class="table-value statement-amount-positive"><%= money(income.value) %></td>
+            <td class="table-actions">
+              <%= link_to t('.edit'), edit_income_path(income), class: "btn btn-ghost btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="5" class="table-empty"><%= t('.no_incomes') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

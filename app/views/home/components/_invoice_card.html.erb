@@ -1,7 +1,8 @@
 <%# locals: (invoice:) %>
 <div class="invoice-card"
      data-action="click->home--modal#open"
-     data-home--modal-url-param="<%= edit_invoice_path(invoice) %>">
+     data-home--modal-url-param="<%= edit_invoice_path(invoice) %>"
+     data-home--modal-title-param="<%= t('home.index.update_invoice') %>">
   <div class="invoice-card-logo">
     <% if invoice.bill.company_logo.attached? %>
       <%= image_tag invoice.bill.company_logo, class: "invoice-card-logo-img" %>

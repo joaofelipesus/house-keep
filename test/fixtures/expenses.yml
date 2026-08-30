@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+may_groceries:
+  title: Mercado
+  value: 410.00
+  spent_on: 2026-05-03
+  category: groceries
+  payment_method: credit_card
+  description: Compras do mês
+
+may_dinner:
+  title: Jantar de aniversário
+  value: 180.00
+  spent_on: 2026-05-09
+  category: food
+  payment_method: pix
+  description: null
+
+april_taxes:
+  title: IPTU
+  value: 1200.00
+  spent_on: 2026-04-15
+  category: taxes
+  payment_method: bank_slip
+  description: null

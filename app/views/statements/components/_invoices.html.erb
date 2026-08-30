@@ -1,0 +1,58 @@
+<%# locals: (invoices:, total:) %>
+
+<section class="statement-section">
+  <header class="statement-section-header">
+    <h2 class="statement-section-title"><%= t('.title') %></h2>
+    <span class="statement-section-total statement-amount-negative"><%= money(total) %></span>
+  </header>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Bill.human_attribute_name(:title) %></th>
+          <th><%= Invoice.human_attribute_name(:due_date) %></th>
+          <th><%= Invoice.human_attribute_name(:payment_status) %></th>
+          <th><%= Invoice.human_attribute_name(:payment_amount) %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if invoices.any? %>
+          <% invoices.each do |invoice| %>
+            <tr>
+              <td>
+                <div class="table-name">
+                  <div class="table-logo">
+                    <% if invoice.bill.company_logo.attached? %>
+                      <%= image_tag invoice.bill.company_logo, class: "table-logo-img" %>
+                    <% else %>
+                      <span class="table-logo-placeholder"><%= invoice.bill.title.first.upcase %></span>
+                    <% end %>
+                  </div>
+                  <div class="table-info">
+                    <span class="table-title"><%= invoice.bill.title %></span>
+                  </div>
+                </div>
+              </td>
+              <td class="table-muted"><%= l(invoice.due_date, format: :short) %></td>
+              <td>
+                <span class="statement-status statement-status-<%= invoice.payment_status %>">
+                  <%= t("activerecord.attributes.invoice.payment_statuses.#{invoice.payment_status}") %>
+                </span>
+              </td>
+              <td class="table-value statement-amount-negative"><%= money(invoice.payment_amount) %></td>
+              <td class="table-actions">
+                <%= link_to t('.edit'), edit_invoice_path(invoice), class: "btn btn-ghost btn-sm" %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="5" class="table-empty"><%= t('.empty') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+<%# locals: (statement:) %>
+
+<%# Wrapped in a stable id so creating an income or an expense from the modal can refresh the
+    totals without a full page load. %>
+<section class="home-statement" id="home-statement">
+  <header class="statement-section-header">
+    <h2 class="statement-section-title"><%= t('.title', month: month_title(statement.month)) %></h2>
+    <%= link_to t('.full_statement'), statement_path, class: "btn btn-ghost btn-sm" %>
+  </header>
+
+  <%= render partial: 'statements/components/summary', locals: { statement: statement } %>
+</section>

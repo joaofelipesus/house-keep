@@ -1,0 +1,8 @@
+<%= turbo_stream.replace 'flash',
+                         partial: 'layouts/components/flash',
+                         locals: { notice: t('.created') } %>
+
+<%# The home page totals are now stale, whichever month the new record landed on. %>
+<%= turbo_stream.replace 'home-statement',
+                         partial: 'home/components/statement',
+                         locals: { statement: @statement } %>
