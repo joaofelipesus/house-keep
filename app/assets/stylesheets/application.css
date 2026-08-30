@@ -66,6 +66,12 @@
   padding: 0;
 }
 
+/* Stops iOS bumping up font sizes of its own accord when the phone is rotated. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: system-ui, sans-serif;
    background: var(--color-bg);
@@ -76,4 +82,13 @@ body {
   max-width: 960px;
   margin: var(--space-2xl) auto;
   padding: 0 var(--space-xl);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-lg);
+    /* Clears the home indicator when the app runs standalone from the home screen. */
+    padding-bottom: calc(var(--space-xl) + env(safe-area-inset-bottom));
+  }
 }

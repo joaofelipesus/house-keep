@@ -3,7 +3,11 @@
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
+
+  /* The tables carry more columns than a phone can show. Scrolling them sideways inside their
+     own wrapper keeps every column reachable without the whole page scrolling with them. */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table {
@@ -108,4 +112,17 @@
   text-align: center;
   color: var(--color-text-muted);
   padding: var(--space-2xl) !important;
+}
+
+@media (max-width: 768px) {
+  /* Below this the columns would be squeezed to a couple of characters each, so the table keeps
+     a readable width and the wrapper scrolls instead. */
+  .table {
+    min-width: calc(var(--base) * 130);
+  }
+
+  .table th,
+  .table td {
+    padding: var(--space-sm) var(--space-md);
+  }
 }

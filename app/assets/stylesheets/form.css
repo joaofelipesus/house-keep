@@ -178,3 +178,18 @@
 }
 
 .form-submit input:hover { background: var(--color-primary-hover); }
+
+/* iOS Safari zooms the whole page when a focused field is smaller than 16px, and it does not
+   zoom back out. Keyed on the pointer rather than the width so an iPhone in landscape - wider
+   than any sensible breakpoint - is covered too. */
+@media (pointer: coarse) {
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form { padding: var(--space-lg); }
+}

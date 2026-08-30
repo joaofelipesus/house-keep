@@ -179,8 +179,8 @@ en:
   statements:
     show:
       title: "Monthly statement"
-      previous_month: "← Previous month"
-      next_month: "Next month →"
+      previous_month: "Previous month"
+      next_month: "Next month"
       new_income: "New income"
       new_expense: "New expense"
     components:

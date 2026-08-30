@@ -13,15 +13,22 @@
 <% end %>
 
 <div class="statement-nav">
-  <%= link_to t('.previous_month'),
-              statement_path(month: @statement.prev_month.strftime('%Y-%m')),
-              class: "btn btn-ghost btn-sm" %>
+  <%# The label collapses on a narrow screen, so each arrow keeps an accessible name of its own. %>
+  <%= link_to statement_path(month: @statement.prev_month.strftime('%Y-%m')),
+              class: "btn btn-ghost btn-sm",
+              aria: { label: t('.previous_month') } do %>
+    <span aria-hidden="true">&larr;</span>
+    <span class="statement-nav-label"><%= t('.previous_month') %></span>
+  <% end %>
 
   <span class="statement-nav-month"><%= month_title(@statement.month) %></span>
 
-  <%= link_to t('.next_month'),
-              statement_path(month: @statement.next_month.strftime('%Y-%m')),
-              class: "btn btn-ghost btn-sm" %>
+  <%= link_to statement_path(month: @statement.next_month.strftime('%Y-%m')),
+              class: "btn btn-ghost btn-sm",
+              aria: { label: t('.next_month') } do %>
+    <span class="statement-nav-label"><%= t('.next_month') %></span>
+    <span aria-hidden="true">&rarr;</span>
+  <% end %>
 </div>
 
 <%= render partial: 'statements/components/summary', locals: { statement: @statement } %>

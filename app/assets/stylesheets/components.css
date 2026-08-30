@@ -569,3 +569,84 @@
 .home-statement .statement-summary {
   margin-bottom: 0;
 }
+
+/* ── Mobile ───────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* The navbar has more in it than an iPhone is wide, so it becomes two rows: brand and income
+     stay on top, the links get their own row and scroll sideways rather than pushing everything
+     else off the screen. */
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    padding-top: calc(var(--space-sm) + env(safe-area-inset-top));
+  }
+
+  .navbar-links {
+    order: 3;
+    width: 100%;
+    gap: var(--space-lg);
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+    scrollbar-width: none;
+  }
+
+  .navbar-links::-webkit-scrollbar { display: none; }
+
+  .navbar-links a { white-space: nowrap; }
+
+  /* "Renda atual" is only a caption for the number right under it - the number survives alone. */
+  .navbar-income-label { display: none; }
+
+  .navbar-income { flex-direction: row; align-items: center; }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .page-actions { flex-wrap: wrap; }
+
+  .statement-nav { gap: var(--space-sm); }
+}
+
+@media (max-width: 640px) {
+  .detail-card-body { grid-template-columns: 1fr; }
+
+  .detail-field {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .detail-field:last-child { border-bottom: none; }
+
+  /* A full-width sheet rising from the bottom is easier to reach one-handed than a centred box. */
+  .modal-overlay { align-items: flex-end; }
+
+  .modal-box {
+    max-width: none;
+    max-height: 92vh;
+    border-radius: calc(var(--radius) * 2) calc(var(--radius) * 2) 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Only the arrow survives - the month it leads to is already spelled out between the two. */
+  .statement-nav-label { display: none; }
+}
+
+/* Apple asks for 44px of tappable height; the ghost buttons are about 24px without this. */
+@media (pointer: coarse) {
+  .btn { min-height: calc(var(--base) * 11); }
+
+  .btn-sm { min-height: calc(var(--base) * 9); }
+}
+
+.brand-mark {
+  flex-shrink: 0;
+  border-radius: calc(var(--base) * 1.5);
+}

@@ -16,9 +16,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # Render dynamic PWA files from app/views/pwa/*. Both are public: the manifest and the service
+  # worker are fetched before there is any session to authenticate with.
+  get 'manifest' => 'rails/pwa#manifest', as: :pwa_manifest
+  # The layout asks for the manifest as /manifest.json, but the service worker is fetched by the
+  # browser at a fixed extensionless path, so its format has to be pinned here instead.
+  get 'service-worker' => 'rails/pwa#service_worker', as: :pwa_service_worker, defaults: { format: :js }
 
   # Defines the root path route ("/")
   root 'home#index'

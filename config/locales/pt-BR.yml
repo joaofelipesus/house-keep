@@ -233,8 +233,8 @@ pt-BR:
   statements:
     show:
       title: "Extrato do mês"
-      previous_month: "← Mês anterior"
-      next_month: "Próximo mês →"
+      previous_month: "Mês anterior"
+      next_month: "Próximo mês"
       new_income: "Nova entrada"
       new_expense: "Novo gasto"
     components:
