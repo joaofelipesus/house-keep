@@ -120,6 +120,7 @@ pt-BR:
           transport: "Transporte"
           health: "Saúde"
           home: "Casa"
+          household_items: "Itens para casa"
           leisure: "Lazer"
           education: "Educação"
           other: "Outros"

@@ -71,6 +71,7 @@ en:
           transport: "Transport"
           health: "Health"
           home: "Home"
+          household_items: "Household items"
           leisure: "Leisure"
           education: "Education"
           other: "Other"

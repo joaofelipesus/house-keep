@@ -29,7 +29,7 @@ class ExpenseTest < ActiveSupport::TestCase
   end
 
   test 'category enum values' do
-    expected = %w[groceries food taxes transport health home leisure education other]
+    expected = %w[groceries food taxes transport health home household_items leisure education other]
 
     assert_equal expected, Expense.categories.keys
   end

@@ -15,6 +15,7 @@ class Expense < ApplicationRecord
       transport: 'transport',
       health: 'health',
       home: 'home',
+      household_items: 'household_items',
       leisure: 'leisure',
       education: 'education',
       other: 'other'
